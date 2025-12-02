@@ -39,7 +39,7 @@
             if (!canvas) { return; }
 
             canvas.on('object:added', updateObjects);
-            canvas.on('object:modified', updateObjects);
+            // canvas.on('object:modified', updateObjects);
             canvas.on('object:removed', updateObjects);
             canvas.on('selection:updated', () => activeObject = canvas.getActiveObject());
 
