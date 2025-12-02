@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="150 150 760 760">
+  <linearGradient id="a"><stop offset="0" style="stop-color:#c93793;stop-opacity:1"/><stop offset="1" style="stop-color:#1814ff;stop-opacity:1"/></linearGradient>
+  <linearGradient xlink:href="#a" id="b" x1="169.43" x2="630.57" y1="567.519" y2="232.481" gradientUnits="userSpaceOnUse"/>
+  <linearGradient xlink:href="#a" id="f" x1="169.43" x2="630.57" y1="567.519" y2="232.481" gradientUnits="userSpaceOnUse"/>
+  <linearGradient xlink:href="#a" id="e" x1="169.43" x2="630.57" y1="567.519" y2="232.481" gradientUnits="userSpaceOnUse"/>
+  <linearGradient xlink:href="#a" id="h" x1="169.43" x2="630.57" y1="567.519" y2="232.481" gradientUnits="userSpaceOnUse"/>
+  <linearGradient xlink:href="#a" id="g" x1="169.43" x2="630.57" y1="567.519" y2="232.481" gradientUnits="userSpaceOnUse"/>
+  <linearGradient xlink:href="#a" id="j" x1="169.43" x2="630.57" y1="567.519" y2="232.481" gradientUnits="userSpaceOnUse"/>
+  <linearGradient xlink:href="#a" id="i" x1="169.43" x2="630.57" y1="567.519" y2="232.481" gradientUnits="userSpaceOnUse"/>
+  <linearGradient xlink:href="#a" id="d" x1="169.43" x2="630.57" y1="567.519" y2="232.481" gradientUnits="userSpaceOnUse"/>
+  <linearGradient xlink:href="#a" id="c" x1="169.43" x2="630.57" y1="567.519" y2="232.481" gradientUnits="userSpaceOnUse"/>
+  <g style="fill:url(#b)" transform="matrix(1.33333 0 0 -1.33333 0 1066.667)">
+    <g style="fill:url(#c)">
+      <g style="fill:url(#d)">
+        <g style="fill:url(#e)" transform="translate(405.664 514.745)">
+          <path d="M0 0c1.756 22.316 21.271 38.982 43.586 37.226C65.902 35.47 82.568 15.956 80.813-6.36c-1.757-22.316-21.271-38.983-43.587-37.226S-1.757-22.316 0 0m-57.466-217.857h-193.46v124.558l59.323 76.478L-66.391-132.38l64.393 55.488 40.996-36.691 90.35 90.35-.092 111.178h-419.92v-348.92h223.972z" style="fill:url(#f);fill-opacity:1;fill-rule:nonzero;stroke:none"/>
+        </g>
+        <g style="fill:url(#g)" transform="translate(375.584 285.911)">
+          <path d="m0 0 71.138-71.139-90.096-17.462Z" style="fill:url(#h);fill-opacity:1;fill-rule:evenodd;stroke:none"/>
+        </g>
+        <g style="fill:url(#i)" transform="translate(389.19 304.57)">
+          <path d="m0 0 219.49 219.489 76.32-76.32L76.32-76.319Z" style="fill:url(#j);fill-opacity:1;fill-rule:evenodd;stroke:none"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
