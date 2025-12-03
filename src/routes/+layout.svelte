@@ -26,7 +26,7 @@
 <SplashScreen />
 
 <Header />
-<div class="w-dvw h-dvh pt-[55px]">
+<div class="w-dvw h-dvh pt-[70px] lg:pt-[55px]">
 	{@render children()}
 </div>
 <Footer />

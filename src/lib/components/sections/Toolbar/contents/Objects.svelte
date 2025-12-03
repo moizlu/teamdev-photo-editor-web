@@ -1,4 +1,8 @@
 <script lang="ts">
+    import flipToFrontLight from "$lib/assets/images/light/flip-to-front.svg";
+    import flipToFrontDark from "$lib/assets/images/dark/flip-to-front.svg";
+    import flipToBackLight from "$lib/assets/images/light/flip-to-back.svg";
+    import flipToBackDark from "$lib/assets/images/dark/flip-to-back.svg";
     import deleteLight from "$lib/assets/images/light/delete.svg";
     import deleteDark from "$lib/assets/images/dark/delete.svg";
     import visibleLight from "$lib/assets/images/light/visible.svg";
@@ -80,26 +84,9 @@
 
             obj.visible = !obj.visible;
             canvas.renderAll();
-            objects = objects;
-
             updateObjects();
         };
     };
-
-    // const onSelectableChangeButton = (obj: FabricObject) => {
-    //     return (event: MouseEvent) => {
-    //         event.stopPropagation();
-
-    //         const canvas = getCanvas();
-    //         if (!canvas) { return; }
-
-    //         obj.selectable = !obj.selectable;
-    //         canvas.renderAll();
-    //         objects = objects;
-
-    //         updateObjects();
-    //     };
-    // };
 
     const onDeleteButtonClicked = (obj: FabricObject) => {
         return (event: MouseEvent) => {
@@ -166,29 +153,24 @@
                         <div class="flex justify-between items-center">
                             <div class="flex-center">
                                 <img src={getObjDataUrl(obj)} alt="サムネイル" width={20} height={20} class="w-[30px] h-[30px] m-2 border-label border">
-                                <p>{obj.type}</p>
                             </div>
 
-                            <div class="flex-center gap-2">
-                                <!-- <button type="button" title="selectable" onclick={onSelectableChangeButton(obj)}>
-                                    {#if obj.selectable}
-                                        <Icon lightSrc={touchLight} darkSrc={touchDark} />
-                                    {:else}
-                                        <Icon lightSrc={noTouchLight} darkSrc={noTouchDark} />
-                                    {/if}
-                                </button> -->
+                            <div class="w-full ml-2 flex justify-between items-center gap-2">
+                                <p>{obj.type}</p>
 
-                                <button type="button" title="visibility" onclick={onVisibilityChangeButtonClicked(obj)} class="transition-all duration-200 hover:scale-110 active:scale-120">
-                                    {#if obj.visible}
-                                        <Icon lightSrc={visibleLight} darkSrc={visibleDark} width={40} height={40} />
-                                    {:else}
-                                        <Icon lightSrc={invisibleLight} darkSrc={invisibleDark} width={40} height={40}  />
-                                    {/if}
-                                </button>
+                                <div class="flex-center">
+                                    <button type="button" title="visibility" onclick={onVisibilityChangeButtonClicked(obj)} class="transition-all duration-200 hover:scale-110 active:scale-120">
+                                        {#if obj.visible}
+                                            <Icon lightSrc={visibleLight} darkSrc={visibleDark} width={30} height={30}  class="mx-2" />
+                                        {:else}
+                                            <Icon lightSrc={invisibleLight} darkSrc={invisibleDark} width={30} height={30}  class="mx-2" />
+                                        {/if}
+                                    </button>
 
-                                <button type="button" title="delete" onclick={onDeleteButtonClicked(obj)} class="transition-all duration-200 hover:scale-110 active:scale-120">
-                                    <Icon lightSrc={deleteLight} darkSrc={deleteDark} width={40} height={40} />
-                                </button>
+                                    <button type="button" title="delete" onclick={onDeleteButtonClicked(obj)} class="transition-all duration-200 hover:scale-110 active:scale-120">
+                                        <Icon lightSrc={deleteLight} darkSrc={deleteDark} width={30} height={30}  class="" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -38,9 +38,9 @@
     }
 </script>
 
-<button type="button" {onclick} class="relative group flex-center button-general p-2 bg-turn-on/20 hover:bg-turn-on/40 active:bg-turn-on/60 disabled:bg-disabled" disabled={!isCanvasCreated()}>
+<button type="button" {onclick} class="relative group flex-center button-general p-4 lg:p-2 bg-turn-on/20 hover:bg-turn-on/40 active:bg-turn-on/60 disabled:bg-disabled" disabled={!isCanvasCreated()}>
     <div class="transition-all duration-200 group-hover:translate-y-1 group-active:translate-y-2 group-disabled:translate-0">
-        <Icon lightSrc={downloadLight} darkSrc={downloadDark} />
+        <Icon lightSrc={downloadLight} darkSrc={downloadDark} class="xs:mr-2 scale-150 lg:scale-100" />
     </div>
-    <p>ダウンロード</p>
+    <p class="hidden xs:block">ダウンロード</p>
 </button>

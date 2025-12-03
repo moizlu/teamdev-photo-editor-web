@@ -8,7 +8,7 @@ html {
 /* @custom-variant dark (&:where(.dark, .dark *)); */
 
 @theme {
-    --breakpoint-xs: 450px;
+    --breakpoint-xs: 500px;
     --breakpoint-2xs: 365px;
 
     --font-primary: "M PLUS 1p", "monospace";

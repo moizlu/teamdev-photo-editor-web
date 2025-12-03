@@ -2,8 +2,8 @@
     import crossLight from "$lib/assets/images/light/cross.svg";
     import crossDark from "$lib/assets/images/dark/cross.svg";
 
-    import uploadLight from "$lib/assets/images/light/upload.svg";
-    import uploadDark from "$lib/assets/images/dark/upload.svg";
+    import addPhotoLight from "$lib/assets/images/light/add-photo.svg";
+    import addPhotoDark from "$lib/assets/images/dark/add-photo.svg";
 
     import type fabric from 'fabric';
     import { FabricImage } from "fabric";
@@ -18,6 +18,8 @@
     let isDraggingOver = $state(false);
     let isInvalidInputModalOpened = $state(false);
 
+    let inputElement: HTMLInputElement | undefined = $state(undefined);
+
     const loadImage = (file: File | undefined) => {
         if (!file?.type.startsWith("image/")) {
             isInvalidInputModalOpened = true;
@@ -31,10 +33,7 @@
             if (!canvas) { return; }
 
             const imgDataUrl = event.target?.result as string;
-
             const image = await FabricImage.fromURL(imgDataUrl);
-
-            const CANVAS_SIZE = 2000;
 
             let displayWidth = image.width;
             let displayHeight = image.height;
@@ -71,6 +70,11 @@
         if (file) {
             loadImage(file);
         }
+
+        if (event.target) {
+            (event.target as HTMLInputElement).files = null;
+        }
+
     };
 
     onMount(() => {
@@ -105,18 +109,19 @@
 </Modal>
 
 <!-- ボタン本体 -->
-<button type="button" class="relative group flex-center button-general p-2 bg-turn-on/20 hover:bg-turn-on/40 active:bg-turn-on/60">
-    <input type="file"  id="image-upload-input" accept="image/*" {onchange} ondragover={(e) => e.preventDefault()} class="absolute opacity-0 inset-0 cursor-pointer">
+<!-- inputの反応が悪いためクリックイベントを模倣 -->
+<button type="button" onclick={() => inputElement?.click()} class=" relative group flex-center button-general p-4 lg:p-2 bg-turn-on/20 hover:bg-turn-on/40 active:bg-turn-on/60">
+    <input type="file"  id="image-upload-input" accept="image/*" bind:this={inputElement} {onchange} ondragover={(e) => e.preventDefault()} class="absolute opacity-0 inset-0 cursor-pointer pointer-events-none">
     <div class="transition-all duration-200 group-hover:-translate-y-1 group-active:-translate-y-2">
-        <Icon lightSrc={uploadLight} darkSrc={uploadDark} />
+        <Icon lightSrc={addPhotoLight} darkSrc={addPhotoDark} class="xs:mr-2 scale-150 lg:scale-100" />
     </div>
-    <p>画像を追加</p>
+    <p class="hidden xs:block">画像を追加</p>
 </button>
 
 <!-- ファイルをドラッグしたときの表示 -->
 {#if isDraggingOver}
     <div transition:fade={{ duration: 300 }} class="z-12 fixed top-0 left-0 w-dvw h-dvh flex-col-center bg-base/90 backdrop-blur-sm">
-        <Icon lightSrc={uploadLight} darkSrc={uploadDark} width={100} height={100} />
+        <Icon lightSrc={addPhotoLight} darkSrc={addPhotoDark} width={100} height={100} />
         <p class="text-2xl">ドラッグ&ドロップで画像を追加</p>
         <p>画面をクリックでキャンセル</p>
     </div>
