@@ -45,10 +45,9 @@
         document.addEventListener('canvasInitialized', () => {
             const canvas = getCanvas();
             resizeCanvas();
-            canvas?.on('object:added', () => {
-                resizeCanvas();
-            })
+            canvas?.on('object:added', resizeCanvas)
         });
+        document.addEventListener('canvasCreated', resizeCanvas);
         window.addEventListener('resize', resizeCanvas);
     });
 </script>

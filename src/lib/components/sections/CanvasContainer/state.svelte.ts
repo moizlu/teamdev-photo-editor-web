@@ -4,13 +4,16 @@ import type fabricModule from 'fabric';
 import { Canvas } from "fabric";
 
 export const canvasInitializedEvent = new Event('canvasInitialized');
+export const canvasCreatedEvent = new Event('canvasCreated');
 
 let canvas: Canvas | undefined = $state(undefined);
 let fabric: typeof fabricModule | undefined = $state(undefined);
 
+let canvasCreated = $state(false);
+
 export const logicSize = $state({
-    width: 100,
-    height: 100,
+    width: 1920,
+    height: 1080,
     scale: 1.0
 });
 
@@ -52,4 +55,17 @@ export const getFabric = () => {
 
 export const getHistory = () => {
     return history;
+}
+
+export const isCanvasCreated = () => {
+    return canvasCreated;
+};
+
+export const setCanvasCreated = (value: boolean) => {
+    if (!browser) { return; }
+
+    canvasCreated = value;
+    if (canvasCreated) {
+        document.dispatchEvent(canvasCreatedEvent);
+    }
 }

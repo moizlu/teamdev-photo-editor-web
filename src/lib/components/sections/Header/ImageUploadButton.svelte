@@ -11,7 +11,7 @@
     import { fade } from "svelte/transition";
     import { onMount } from "svelte";
 
-    import { getCanvas, logicSize } from "$lib/components/sections/CanvasContainer/state.svelte";
+    import { isCanvasCreated, setCanvasCreated, getCanvas, logicSize } from "$lib/components/sections/CanvasContainer/state.svelte";
     import Icon from "$lib/components/ui/Icon/Icon.svelte";
     import Modal from "$lib/components/ui/Modal/Modal.svelte";
 
@@ -39,27 +39,8 @@
             let displayWidth = image.width;
             let displayHeight = image.height;
 
-            // let displayWidth = CANVAS_SIZE;
-            // let displayHeight = CANVAS_SIZE;
-
-            // if (image.width > image.height) {
-            //     const ratio = image.height / image.width;
-
-            //     displayWidth = CANVAS_SIZE;
-            //     displayHeight = CANVAS_SIZE * ratio;
-
-            //     image.scale(displayWidth /image.width);
-            // } else {
-            //     const ratio = image.width / image.height;
-
-            //     displayWidth = CANVAS_SIZE * ratio;
-            //     displayHeight = CANVAS_SIZE;
-
-            //     image.scale(displayHeight / image.height);
-            // }
-
             // 最初の画像は背景として使う
-            if (canvas.getObjects().length === 0) {
+            if (!isCanvasCreated()) {
                 canvas.setDimensions({
                     width: displayWidth,
                     height: displayHeight
@@ -69,12 +50,8 @@
                 logicSize.height = displayHeight;
                 logicSize.scale = 1.0;
 
-                // canvas.backgroundImage = image;
+                setCanvasCreated(true);
             } else {
-                // canvas.add(image);
-                // canvas.centerObject(image);
-                // canvas.setActiveObject(image);
-
                 image.scale(0.5);
             }
 

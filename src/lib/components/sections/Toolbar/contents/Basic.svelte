@@ -1,6 +1,11 @@
 <script lang="ts">
+    import arrowBothLight from "$lib/assets/images/light/arrow-both.svg";
+    import arrowBothDark from "$lib/assets/images/dark/arrow-both.svg";
+
     import { onMount } from "svelte";
     import { Canvas, FabricImage } from "fabric";
+
+    import Icon from "$lib/components/ui/Icon/Icon.svelte";
 
     import { getCanvas } from "../../CanvasContainer/state.svelte";
 
@@ -45,10 +50,12 @@
 </script>
 
 <div class="m-2 flex flex-col justify-start">
-    <button type="button" title="水平に反転" onclick={onFlipHorizontal} class="m-2 py-2 button-general flex justify-center items-start">
+    <button type="button" title="水平に反転" onclick={onFlipHorizontal} class="m-2 py-2 button-general flex justify-start items-center">
+        <Icon lightSrc={arrowBothLight} darkSrc={arrowBothDark} class="rotate-90 m-2" />
         <p>水平方向に反転</p>
     </button>
-    <button type="button" title="水平に反転" onclick={onFlipVertical} class="m-2 py-2 button-general flex justify-center items-start">
+    <button type="button" title="水平に反転" onclick={onFlipVertical} class="m-2 py-2 button-general flex justify-start items-center">
+        <Icon lightSrc={arrowBothLight} darkSrc={arrowBothDark} class="m-2" />
         <p>垂直方向に反転</p>
     </button>
 </div>
