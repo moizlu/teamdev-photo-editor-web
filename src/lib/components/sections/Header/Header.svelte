@@ -8,7 +8,7 @@
 
 <!-- これだけは常に上に出しておく -->
 <!-- headerの中に入れると引っ張られる -->
-<div class="fixed top-0 left-0 z-1000 flex h-[55px] items-center mx-0 sm:mx-5">
+<div class="fixed top-0 left-0 z-1000 flex h-[55px] items-center mx-0 sm:mx-5 pointer-events-none">
     <img src={favicon} alt="favicon" width={40} height={40} class="pointer-events-none scale-75 sm:scale-100">
     <p class="m-2 hidden sm:block">画像編集ツール</p>
     <!-- <p class="text-danger text-4xl">注意：中身はまだ実装中です。</p> -->

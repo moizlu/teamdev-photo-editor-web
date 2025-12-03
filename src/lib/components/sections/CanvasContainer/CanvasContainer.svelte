@@ -78,6 +78,7 @@
                         <p class="text-3xl">画像を追加　　　</p>
                     </div>
                 </button>
+                <p class="text-2xl text-center">もしくは</p>
                 <button type="button" title="キャンバスを作成" onclick={onCreateCanvasClicked} class="button-general">
                     <div class="flex-center gap-2">
                         <Icon lightSrc={layersLight} darkSrc={layersDark} width={50} height={50} class="m-2" />

@@ -17,7 +17,7 @@
     import type { Canvas } from "fabric";
     import type { ClassValue } from "svelte/elements";
 
-    import { getCanvas } from "$lib/components/sections/CanvasContainer/state.svelte";
+    import { getCanvas, isCanvasCreated } from "$lib/components/sections/CanvasContainer/state.svelte";
 
     import ObjectsContent from "./contents/Objects.svelte";
 
@@ -110,4 +110,8 @@
     {@render tab("フィルター", filtersLight, filtersDark)}
 {/snippet}
 
-<TabMenu {tabs} class={[className, "grid max-lg:grid-rows-[1fr_70px] lg:grid-cols-[100px_1fr]"]} tabClass="order-2 lg:order-1 flex lg:flex-col p-2 shadow-black shadow-[0_0_10px_0_rgba(0,0,0,0)]" tabItemClass="w-14 h-14 lg:w-18 lg:h-18 p-1 lg:p-2 mx-2 lg:m-2 button-general" activeTabItemClass="scale-110 bg-turn-on/40 shadow-lg/50" contentClass="overflow-auto w-full order-1 lg:order-2" activeTabId="canvas" />
+<!-- キャンバスが初期化されるまでのプレースホルダー -->
+<div class={[className, "w-full h-full", (isCanvasCreated()) ? "hidden" : "flex-center"]}></div>
+<!-- これをDOMから消すとイベント管理が面倒なことになる -->
+<!-- 初めから分割しておくべきだったorz -->
+<TabMenu {tabs} class={[className, "transition-all duration-300", (isCanvasCreated()) ? "opacity-100 translate-0 grid max-lg:grid-rows-[1fr_70px] lg:grid-cols-[100px_1fr]" : "absolute opacity-0 -translate-x-5 pointer-events-none"]} tabClass="order-2 lg:order-1 flex lg:flex-col p-2 shadow-black shadow-[0_0_10px_0_rgba(0,0,0,0)]" tabItemClass="w-14 h-14 lg:w-18 lg:h-18 p-1 lg:p-2 mx-2 lg:m-2 button-general" activeTabItemClass="scale-110 bg-turn-on/40 shadow-lg/50" contentClass="overflow-auto w-full order-1 lg:order-2" activeTabId="objects" />

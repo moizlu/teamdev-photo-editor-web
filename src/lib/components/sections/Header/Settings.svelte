@@ -12,7 +12,7 @@
     let isOpened = $state(false);
 </script>
 
-<button type="button" aria-label="settings" onclick={() => isOpened = !isOpened} title="設定" class="z-11 mx-2 transition-all duration-200 hover:rotate-30 active:rotate-60 hover:scale-130 active:scale-130">
+<button type="button" aria-label="settings" onclick={() => isOpened = !isOpened} title="設定" class="z-11 transition-all duration-200 hover:rotate-30 active:rotate-60 hover:scale-130 active:scale-130">
     {#if isOpened}
         <Icon lightSrc={crossLight} darkSrc={crossDark} width={40} height={40} class="w-full h-full" />
     {:else}
