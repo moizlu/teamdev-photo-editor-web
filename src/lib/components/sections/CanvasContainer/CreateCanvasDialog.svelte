@@ -5,6 +5,7 @@
     import Icon from "$lib/components/ui/Icon/Icon.svelte";
     import Modal from "$lib/components/ui/Modal/Modal.svelte";
     import { getCanvas, logicSize, setCanvasCreated } from "./state.svelte";
+  import { onMount } from "svelte";
 
     interface Props {
         isOpened?: boolean
@@ -37,6 +38,13 @@
         setCanvasCreated(true);
         isOpened = false;
     };
+
+    onMount(() => {
+        // ファイルをD&Dしようとしたら閉じる(画像のアップロード機能と被るため)
+        document.addEventListener('dragover', () => {
+            isOpened = false;
+        });
+    });
 </script>
 
 <Modal isModal={false} bind:isOpened={isOpened}>
