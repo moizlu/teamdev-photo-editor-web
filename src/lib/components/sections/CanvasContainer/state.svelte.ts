@@ -20,13 +20,6 @@ export const logicSize = $state({
 export const initCanvas = async (canvasElement: HTMLCanvasElement | undefined) => {
     if (!browser) { return; }
 
-    // import("fabric").then((fabric) => {
-    // fabric.initFilterBackend = function() {
-
-    //     return (new fabric.Canvas2dFilterBackend());
-    // };
-    // });
-
     if (!canvasElement) {
         throw new Error("メインのキャンバスが見つかりません。");
     }
@@ -37,7 +30,6 @@ export const initCanvas = async (canvasElement: HTMLCanvasElement | undefined) =
 
     fabric = await import("fabric");
 
-
     // onMount()内のイベントリスナーが確実に登録されるように待つ
     setTimeout(() => {
         document.dispatchEvent(canvasInitializedEvent);
@@ -45,22 +37,11 @@ export const initCanvas = async (canvasElement: HTMLCanvasElement | undefined) =
 };
 
 // キャンバスの初期化が終わるまでは`undefined`
-export const getCanvas = () => {
-    return canvas;
-}
+export const getCanvas = () => { return canvas; }
+export const getFabric = () => { return fabric; }
+export const getHistory = () => { return history; }
 
-export const getFabric = () => {
-    return fabric;
-}
-
-export const getHistory = () => {
-    return history;
-}
-
-export const isCanvasCreated = () => {
-    return canvasCreated;
-};
-
+export const isCanvasCreated = () => { return canvasCreated; }
 export const setCanvasCreated = (value: boolean) => {
     if (!browser) { return; }
 
