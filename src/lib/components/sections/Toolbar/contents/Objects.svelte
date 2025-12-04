@@ -283,7 +283,7 @@
                 <p>Y</p>
                 <Number bind:value={activeObjY} onchange={onActiveObjectChanged} />
             </div>
-            {#if activeObject.type = 'text'}
+            {#if activeObject.type === 'text'}
                 <p class="text-center">テキスト</p>
                 <input type="text" bind:value={activeObjText} onchange={onActiveObjectChanged} class="text-right rounded-lg p-2 shadow-black shadow-sm/100">
             {/if}
