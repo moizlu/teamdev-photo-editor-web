@@ -47,9 +47,18 @@
         canvas.renderAll();
     };
 
+    const onChangeDrawingMode = () => {
+        const canvas = getCanvas();
+        if (!canvas) { return; }
+        canvas.isDrawingMode = true;
+    }
 </script>
 
 <div class="m-2 flex flex-col justify-start">
+    <!-- <ToggleButton onchange={onChangeDrawingMode} class="flex justify-start items-center">
+        <Icon lightSrc={arrowBothLight} darkSrc={arrowBothDark} class="rotate-90 m-2" />
+        <p>フリーハンド</p>
+    </ToggleButton> -->
     <button type="button" title="水平に反転" onclick={onFlipHorizontal} class="m-2 py-2 button-general flex justify-start items-center">
         <Icon lightSrc={arrowBothLight} darkSrc={arrowBothDark} class="rotate-90 m-2" />
         <p>水平方向に反転</p>

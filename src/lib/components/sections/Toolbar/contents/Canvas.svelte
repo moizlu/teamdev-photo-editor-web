@@ -34,7 +34,7 @@
         const canvas = getCanvas();
         if (!canvas) { return; }
 
-        history.push();
+        // history.push();
         canvas.backgroundColor = backgroundColor;
         canvas.renderAll();
     };
@@ -47,7 +47,8 @@
             width = logicSize.width;
             height = logicSize.height;
 
-            backgroundColor = canvas.backgroundColor as string;
+            backgroundColor = "rgb(255, 255, 255)";
+            canvas.backgroundColor = backgroundColor;
         });
     });
 </script>
