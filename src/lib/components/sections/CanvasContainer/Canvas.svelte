@@ -52,4 +52,4 @@
     });
 </script>
 
-<canvas id="main-canvas" bind:this={canvasElement} class={[className, " shadow-black shadow-lg/50"]} {...props}></canvas>
+<canvas id="main-canvas" bind:this={canvasElement} class={[className, "transition-all duration-300  shadow-black shadow-lg/50"]} {...props}></canvas>

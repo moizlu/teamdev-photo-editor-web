@@ -47,7 +47,7 @@
     // });
 </script>
 
-<Modal bind:isOpened={isModalOpened} isModal={false}>
+<Modal bind:isOpened={isModalOpened} isModal={true}>
     <div class="w-90 h-60 flex flex-col justify-between items-center bg-base rounded-2xl shadow-black shadow-sm/100">
         <Icon lightSrc={exclamationLight} darkSrc={exclamationDark} width={100} height={100} />
         <p class="text-lg">本当にリセットしますか？</p>

@@ -66,7 +66,7 @@
         </div>
 
         <button onclick={onCreateCanvasClicked} class="button-general m-5 px-10 py-2 text-base-light">
-            <p>適用</p>
+            <p>作成</p>
         </button>
     </div>
 </Modal>

@@ -60,7 +60,7 @@
             </div>
 
             <button onclick={onCreateCanvasClicked} class="button-general m-5 px-10 py-2 text-base-light">
-                <p>作成</p>
+                <p>適用</p>
             </button>
         </div>
     </AccordionItem>
