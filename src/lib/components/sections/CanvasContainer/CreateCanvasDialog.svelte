@@ -28,14 +28,7 @@
         const canvas = getCanvas();
         if (!canvas) { return; }
 
-        logicSize.width = width;
-        logicSize.height = height;
-        canvas.setDimensions({
-            width: width,
-            height: height
-        });
-
-        setCanvasCreated(true);
+        setCanvasCreated(true, width, height);
         isOpened = false;
     };
 

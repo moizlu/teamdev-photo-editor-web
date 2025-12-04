@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
+    import { history } from "../../CanvasContainer/history.svelte";
     import { getCanvas, setCanvasCreated } from "../../CanvasContainer/state.svelte";
     import { logicSize } from "../../CanvasContainer/state.svelte";
 
@@ -26,20 +27,14 @@
         const canvas = getCanvas();
         if (!canvas) { return; }
 
-        logicSize.width = width;
-        logicSize.height = height;
-        canvas.setDimensions({
-            width: width,
-            height: height
-        });
-
-        setCanvasCreated(true);
+        setCanvasCreated(true, width, height);
     };
 
     const onBackgroundColorChanged = () => {
         const canvas = getCanvas();
         if (!canvas) { return; }
 
+        history.push();
         canvas.backgroundColor = backgroundColor;
         canvas.renderAll();
     };
@@ -78,6 +73,8 @@
                 <input type="number" onchange={validationInput} bind:value={height} min="1" step="1" class="w-30">
                 <p class="m-2">px</p>
             </div>
+
+            <p class="text-sm">変更すると履歴はリセットされます。</p>
 
             <button onclick={onCreateCanvasClicked} class="button-general m-5 px-10 py-2 text-base-light">
                 <p>適用</p>

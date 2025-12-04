@@ -65,8 +65,6 @@
         <Canvas bind:canvasElement={canvasElement} bind:container={container} class="p-2" />
     <!-- </div> -->
 
-    <!-- <UndoButton /> -->
-
     <CreateCanvasDialog bind:isOpened={isCanvasCreateDialogOpened} />
 
     {#if !isCanvasCreated()}
@@ -87,5 +85,8 @@
                 </button>
             </div>
         </div>
+
+    {:else}
+        <UndoButton />
     {/if}
 </div>

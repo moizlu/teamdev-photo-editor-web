@@ -2,15 +2,25 @@
     import undoLight from "$lib/assets/images/light/undo.svg";
     import undoDark from "$lib/assets/images/dark/undo.svg";
     import Icon from '$lib/components/ui/Icon/Icon.svelte';
+
+    import { history } from "./history.svelte";
+
+    const onUndoClicked = () => {
+        history.undo();
+    };
+
+    const onRedoClicked = () => {
+        history.redo();
+    };
 </script>
 
-<div class="z-200 fixed bottom-0 right-0 m-3 w-30 h-10 rounded-full bg-label/10 shadow-black shadow-md/100">
+<div class="z-9 fixed bottom-0 right-0 m-3">
     <div class="w-full h-full flex justify-around items-center">
-        <button type="button">
+        <button type="button" onclick={onUndoClicked} class="button-general m-1 p-1">
             <Icon lightSrc={undoLight} darkSrc={undoDark} width={30} height={30} />
         </button>
-        <div class="w-[2px] h-full bg-label"></div>
-        <button type="button">
+        <div class="w-0.5 h-full bg-label"></div>
+        <button type="button" onclick={onRedoClicked} class="button-general m-1 p-1">
             <Icon lightSrc={undoLight} darkSrc={undoDark} width={30} height={30}  class="rotate-y-180" />
         </button>
 
