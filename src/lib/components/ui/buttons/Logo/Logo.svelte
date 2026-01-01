@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <th>ソースコード</th>
-                    <td><a href="https://photoeditor.moizlu.com/source-code" class="text-turn-on underline">こちら</a></td>
+                    <td><a href="https://photoeditor.moizlu.com/source-code" target="_blank" class="text-turn-on underline">こちら</a></td>
                 </tr>
             </tbody>
         </table>
