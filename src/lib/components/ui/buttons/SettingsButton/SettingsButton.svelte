@@ -27,6 +27,6 @@
     </div>
 {/snippet}
 
-<button type="button" {onclick} class={[className, "group"]} {...props}>
+<button type="button" {onclick} class={[className, "group cursor-pointer"]} {...props}>
     <SvgIcon Svg={SettingsIcon} size={40} class="group-hover:rotate-45 group-active:rotate-90" />
 </button>
