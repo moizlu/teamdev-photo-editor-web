@@ -1,0 +1,1 @@
+export { basicInfo } from './tab.svelte';

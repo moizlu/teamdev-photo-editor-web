@@ -8,7 +8,7 @@ html {
 /* @custom-variant dark (&:where(.dark, .dark *)); */
 
 @theme {
-    --breakpoint-xs: 500px;
+    --breakpoint-xs: 450px;
     --breakpoint-2xs: 365px;
 
     --font-primary: "M PLUS 1p", "monospace";
@@ -42,20 +42,20 @@ html {
 
 @layer base {
     input[type="range"] {
-        @apply relative appearance-none transition-all duration-300 my-[2px] h-6 cursor-pointer rounded-full inset-shadow-black inset-shadow-sm/50 bg-label/5 shadow-black hover:shadow-md/100 active:shadow-md/100;
+        @apply relative appearance-none transition-all duration-300 my-0.5 h-6 cursor-pointer rounded-full inset-shadow-black inset-shadow-sm/50 bg-label/5 shadow-black hover:shadow-md/100 active:shadow-md/100;
     }
     input[type="range"]::-webkit-slider-runnable-track {
-        @apply relative appearance-none transition-all duration-300 my-[2px] h-6 cursor-pointer rounded-full inset-shadow-black inset-shadow-sm/50 bg-label/5 shadow-black hover:shadow-md/100 active:shadow-md/100;
+        @apply relative appearance-none transition-all duration-300 my-0.5 h-6 cursor-pointer rounded-full inset-shadow-black inset-shadow-sm/50 bg-label/5 shadow-black hover:shadow-md/100 active:shadow-md/100;
     }
     input[type="range"]::-moz-range-track {
-        @apply relative appearance-none transition-all duration-300 my-[2px] h-6 cursor-pointer rounded-full inset-shadow-black inset-shadow-sm/50 bg-label/5 shadow-black hover:shadow-md/100 active:shadow-md/100;
+        @apply relative appearance-none transition-all duration-300 my-0.5 h-6 cursor-pointer rounded-full inset-shadow-black inset-shadow-sm/50 bg-label/5 shadow-black hover:shadow-md/100 active:shadow-md/100;
     }
 
     input[type="range"]::-webkit-slider-thumb {
-        @apply appearance-none rounded-md w-9 h-7 -mt-[2px] bg-base-light shadow-black shadow-md/100;
+        @apply appearance-none rounded-md w-9 h-7 -mt-0.5 bg-base-light shadow-black shadow-md/100;
     }
     input[type="range"]::-moz-range-thumb {
-        @apply appearance-none rounded-md w-9 h-7 -mt-[2px] bg-base-light shadow-black shadow-md/100;
+        @apply appearance-none rounded-md w-9 h-7 -mt-0.5 bg-base-light shadow-black shadow-md/100;
     }
 
     input[type="number"] {
@@ -67,6 +67,22 @@ html {
     input[type="number"]::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
+    }
+
+    input[type="radio"] {
+        @apply sr-only;
+    }
+
+    label:has(input[type="radio"]) {
+        @apply cursor-pointer p-1 rounded-md transition-all duration-150 shadow-black shadow-md/50 hover:shadow-md/25 active:shadow-sm/10 bg-base hover:bg-turn-on/10 active:bg-turn-on/30;
+    }
+
+    label:has(input[type="radio"]:checked) {
+        @apply bg-turn-on/30;
+    }
+
+    img {
+        pointer-events: none;
     }
 }
 
@@ -80,7 +96,14 @@ html {
     }
 
     .button-general {
-        @apply transition-all duration-300 rounded-sm hover:bg-label/3 active:bg-label/10 shadow-black shadow-md/100 hover:shadow-md/50 active:shadow-sm/5 cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled disabled:shadow-sm/10;
+        @apply transition-all duration-300 rounded-sm shadow-black shadow-md/100 hover:shadow-md/50 active:shadow-sm/5 cursor-pointer disabled:cursor-not-allowed disabled:bg-disabled disabled:shadow-sm/10;
+    }
+
+    .button-bg-turn-on {
+        @apply bg-turn-on/30 hover:bg-turn-on/50 active:bg-turn-on/70;
+    }
+    .button-bg-danger {
+        @apply bg-danger/60 hover:bg-danger/50 active:bg-danger/30;
     }
 }
 

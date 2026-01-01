@@ -1,0 +1,1 @@
+export { objectsInfo } from './tab.svelte';

@@ -1,0 +1,1 @@
+export { effectsInfo } from './tab.svelte';

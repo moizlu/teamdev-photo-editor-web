@@ -1,22 +1,20 @@
 <script lang="ts">
-    import loadingLight from "$lib/assets/images/light/loading.svg";
-    import loadingDark from "$lib/assets/images/dark/loading.svg";
+    import { fade } from 'svelte/transition';
 
-    import { fade } from "svelte/transition";
+    import LoadingIcon from '$lib/assets/icons/loading.svelte';
 
-    import Icon from "$lib/components/ui/Icon/Icon.svelte";
-    import { onMount } from "svelte";
+    import { fabricState } from '$lib/state';
 
-    let isReady = false;
+    import SvgIcon from '$lib/components/ui/SvgIcon/SvgIcon.svelte';
 
-    onMount(() => {
-        isReady = true;
-    })
+    const isOpened = $derived(fabricState.get() === undefined);
 </script>
 
-{#if !isReady}
-    <div transition:fade={{ duration: 300 }} class="fixed top-0 h-screen w-screen z-100000 bg-base flex-col-center">
-        <p class="text-2xl">読み込み中...</p>
-        <Icon lightSrc={loadingLight} darkSrc={loadingDark} width={100} height={100} fetchpriority="high" class="animate-spin" />
+{#if isOpened}
+    <div transition:fade={{duration: 300}} class="fixed w-dvw h-dvh top-0 left-0 z-100 bg-base">
+        <div class="w-full h-full flex flex-col justify-center items-center gap-5">
+            <p class="text-3xl">読み込み中...</p>
+            <SvgIcon Svg={LoadingIcon} size={100} class="animate-spin" />
+        </div>
     </div>
 {/if}
