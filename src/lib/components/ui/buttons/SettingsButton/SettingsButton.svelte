@@ -13,7 +13,7 @@
     const { class: className, ...props }: Props = $props();
 
     const onclick = () => {
-        dialog.activate({ id: "settings", content: settingsDialog, isDrawWindow: true, isModal: true, priority: 100 })
+        dialog.activate({ id: "settings", content: settingsDialog, isDrawWindow: true, priority: 100 })
     };
 </script>
 
