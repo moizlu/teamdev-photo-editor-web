@@ -1,5 +1,4 @@
 <script lang="ts">
-    import CloseIcon from "$lib/assets/icons/close.svelte";
     import SettingsIcon from "$lib/assets/icons/settings.svelte";
 
     import type { HTMLButtonAttributes } from "svelte/elements";
@@ -18,13 +17,7 @@
 </script>
 
 {#snippet settingsDialog()}
-    <div class="w-full">
-        <button onclick={() => dialog.deactivate()} title="閉じる" class="mx-3 fixed top-0 right-0 cursor-pointer">
-            <SvgIcon Svg={CloseIcon} size={60} />
-        </button>
-
-        <Contents />
-    </div>
+    <Contents />
 {/snippet}
 
 <button type="button" {onclick} class={[className, "group cursor-pointer"]} {...props}>

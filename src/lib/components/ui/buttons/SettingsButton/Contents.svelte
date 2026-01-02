@@ -2,8 +2,11 @@
     import DevicesIcon from "$lib/assets/icons/devices.svelte";
     import LightIcon from "$lib/assets/icons/light.svelte";
     import DarkIcon from "$lib/assets/icons/dark.svelte";
+    import CloseIcon from "$lib/assets/icons/close.svelte";
 
     import SvgIcon from "../../SvgIcon/SvgIcon.svelte";
+
+    import { dialog } from "../../Dialog";
 
     import type { SystemTheme } from "$lib/state";
     import { theme } from "$lib/state";
@@ -14,8 +17,12 @@
     }
 </script>
 
-<div class="flex-col-center">
-    <h1 class="text-4xl text-center my-5">設定</h1>
+<div class="relative flex-col-center">
+    <button onclick={() => dialog.deactivate()} title="閉じる" class="absolute top-0 right-0 cursor-pointer">
+        <SvgIcon Svg={CloseIcon} size={60} />
+    </button>
+
+    <h1 class="text-4xl text-center my-2">設定</h1>
     <form class="w-full flex flex-col gap-2 justify-center items-stretch text-xl">
         <p class="text-2xl text-center">テーマカラー</p>
         <label class="flex justify-start">
