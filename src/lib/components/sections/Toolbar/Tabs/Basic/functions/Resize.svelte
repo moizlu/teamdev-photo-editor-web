@@ -23,15 +23,43 @@
         method = (document.querySelector('input[name="basic:resize-method"]:checked') as HTMLInputElement)?.value as ResizeMethod;
     }
 
-    // TODO: 続きを実装する
     const onApply = () => {
+        const canvas = canvasState.get();
+        if (!canvas) { return; }
+        const image = canvas.backgroundImage;
+        if (!image) { return; }
+
         switch (method) {
             case "width-height":
-                originalSize.set({
+                canvasState.create({
                     width: width,
                     height: height
                 });
+
+                image.width = width;
+                image.height = height;
+                break;
+            case "width":
+                image.scaleToWidth(width);
+                break;
+            case "height":
+                image.scaleToHeight(height);
+                break;
+            case "scale":
+                image.scale(scale);
+                break;
         }
+
+        canvasState.create({
+            width: image.getScaledWidth(),
+            height: image.getScaledHeight()
+        });
+
+        canvas.centerObject(image);
+        canvas.renderAll();
+
+        width = originalSize.width;
+        height = originalSize.height;
     }
 
     onMount(() => {
@@ -40,23 +68,24 @@
     });
 </script>
 
-<AccordionMenu icon={ResizeIcon} title="リサイズ" isOpened={false}>
+<AccordionMenu icon={ResizeIcon} title="リサイズ" isOpened={false} {onApply}>
     <div class="max-lg:flex gap-2">
-        <form class="flex-1 w-full h-full flex flex-col gap-0.5 justify-center items-stretch">
-            <label class="flex justify-between items-center">
+        <form class="w-full flex flex-col gap-0.5 justify-center items-stretch">
+            <p class="text-sm">アスペクト比を維持したままリサイズします。</p>
+            <!-- <label class="flex justify-between items-center">
                 <input {onchange} type="radio" name="basic:resize-method" value="width-height">
                 <SvgIcon Svg={ZoomOutIcon} size={30} class="rotate-45" />
                 <p class="w-full flex-1 text-center">両方指定</p>
-            </label>
+            </label> -->
             <label class="flex justify-between items-center">
                 <input {onchange} type="radio" name="basic:resize-method" value="width">
                 <SvgIcon Svg={ArrowBothIcon} size={30} class="rotate-90" />
-                <p class="w-full flex-1 text-center">幅を指定</p>
+                <p class="w-full flex-1 text-center">幅で指定</p>
             </label>
             <label class="flex justify-between items-center">
                 <input {onchange} type="radio" name="basic:resize-method" value="height">
                 <SvgIcon Svg={ArrowBothIcon} size={30} />
-                <p class="w-full flex-1 text-center">高さを指定</p>
+                <p class="w-full flex-1 text-center">高さで指定</p>
             </label>
             <label class="flex justify-between items-center">
                 <input {onchange} type="radio" name="basic:resize-method" value="scale">
@@ -66,28 +95,26 @@
         </form>
 
         <div class="flex-1 flex-col-center">
+            <div class="flex-col-center">
+                <p class="m-2">解像度: {originalSize.width}x{originalSize.height}</p>
+            </div>
             <div class="w-full flex-col-center gap-2 my-2">
                 <div class={["transition-all duration-150 w-full flex-center gap-1", (method === "width-height" || method === "width") ? "opacity-100" : "pointer-events-none absolute opacity-0"]}>
                     <p class="text-nowrap">幅　</p>
-                    <input type="number" bind:value={width} class="w-30">
+                    <input type="number" bind:value={width} class="w-20">
                     <p>px</p>
                 </div>
                 <div class={["transition-all duration-150 w-full flex-center gap-1", (method === "width-height" || method === "height") ? "opacity-100" : "pointer-events-none absolute opacity-0"]}>
                     <p class="text-nowrap">高さ</p>
-                    <input type="number" bind:value={height} class="w-30">
+                    <input type="number" bind:value={height} class="w-20">
                     <p>px</p>
                 </div>
                 <div class={["transition-all duration-150 w-full flex-center gap-1", (method === "scale") ? "opacity-100" : "pointer-events-none absolute opacity-0"]}>
                     <p class="text-nowrap">倍率</p>
-                    <input type="number" bind:value={scale} class="w-30">
+                    <input type="number" bind:value={scale} class="w-20">
                     <p>倍</p>
                 </div>
             </div>
-
-            <button onclick={onApply} class="flex-center button-general button-bg-turn-on p-2">
-                <SvgIcon Svg={CheckIcon} size={30} />
-                <p>適用</p>
-            </button>
         </div>
     </div>
 </AccordionMenu>

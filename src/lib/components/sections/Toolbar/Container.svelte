@@ -3,6 +3,8 @@
 
     import { canvasState } from "$lib/state";
 
+    import { isMenuOpened } from "$lib/components/ui/AccordionMenu";
+
     import Labels from "./Label.svelte";
     import Contents from "./Contents.svelte";
 
@@ -13,8 +15,8 @@
 </script>
 
 {#if canvasState.isCreated()}
-    <div class={[className, "w-full h-full grid max-lg:grid-rows-[1fr_80px] lg:grid-cols-[80px_1fr]"]}>
-        <Labels class="order-2 lg:order-1 shadow-black lg:shadow-md/100" />
+    <div class={[className, "transition-all duration-200 w-full h-full grid lg:grid-cols-[80px_1fr]", (isMenuOpened.get()) ? "max-lg:grid-rows-[1fr_0]" : "max-lg:grid-rows-[1fr_80px]"]}>
+        <Labels class={["order-2 lg:order-1 shadow-black lg:shadow-md/100", (isMenuOpened.get()) && "max-lg:hidden"]} />
         <Contents class="order-1 lg:order-2 shadow-black max-lg:shadow-sm/100" />
     </div>
 {:else}
