@@ -24,8 +24,9 @@
         isOpened = !isOpened;
     }
 
+    // モバイル環境のみ処理終了後にメニューを閉じる
     const mobileModalClose = () => {
-        if (window.matchMedia("(max-width:64rem)").matches) {
+        if (window.matchMedia("(max-width:64rem)").matches) { // ブレークポイントlg
             isOpened = false;
         }
     }

@@ -14,6 +14,8 @@
     const { class: className }: Props = $props();
 </script>
 
+
+<!-- モバイル環境でツールのモーダルを閉じる時に急にラベルを表示するとレイアウトがガクガクするためアニメーションで誤魔化す -->
 {#if canvasState.isCreated()}
     <div class={[className, "transition-all duration-200 w-full h-full grid lg:grid-cols-[80px_1fr]", (isMenuOpened.get()) ? "max-lg:grid-rows-[1fr_0]" : "max-lg:grid-rows-[1fr_80px]"]}>
         <Labels class={["order-2 lg:order-1 shadow-black lg:shadow-md/100", (isMenuOpened.get()) && "max-lg:hidden"]} />
