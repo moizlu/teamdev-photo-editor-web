@@ -53,7 +53,7 @@
 
             {@render children()}
             <div class="w-full flex justify-stretch items-center gap-2">
-                <button onclick={mobileModalClose} class="flex-1 flex justify-start items-center button-general button-bg-danger">
+                <button onclick={mobileModalClose} class="lg:hidden flex-1 flex justify-start items-center button-general button-bg-danger">
                     <SvgIcon Svg={CloseIcon} size={40} />
                     <p class="flex-1 text-center">キャンセル</p>
                 </button>
