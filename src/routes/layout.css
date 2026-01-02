@@ -28,7 +28,7 @@ html {
     --color-warning: var(--color-yellow-300);
     --color-disabled: light-dark(var(--color-neutral-300), var(--color-neutral-500));
 
-    --color-turn-on: var(--color-sky-400);
+    --color-turn-on: light-dark(var(--color-blue-600), var(--color-sky-400));
     --color-turn-off: var(--color-neutral-500);
 
     --spacing-safe-top: env(safe-area-inset-top);
