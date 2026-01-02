@@ -22,9 +22,9 @@
 </script>
 
 <div class={[className, "overflow-auto p-2"]}>
-    <div class="relative w-full">
+    <div class="relative w-full h-full">
         {#each tabs as tab}
-            <div class={["transition-all duration-300", (activeTab.isActive(tab.id)) ? "static pointer-events-auto translate-0 opacity-100" : "w-full pointer-events-none absolute top-0 left-0 max-lg:-translate-x-5 lg:translate-y-5 opacity-0"]}>
+            <div class={["w-full h-full transition-all duration-300", (activeTab.isActive(tab.id)) ? "static pointer-events-auto translate-0 opacity-100" : "w-full pointer-events-none absolute top-0 left-0 max-lg:-translate-x-5 lg:translate-y-5 opacity-0"]}>
                 <tab.contents />
             </div>
         {/each}

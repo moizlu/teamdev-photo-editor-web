@@ -3,7 +3,7 @@
 
     import LoadingIcon from "$lib/assets/icons/loading.svelte";
 
-    type IconType = typeof LoadingIcon;
+    export type IconType = typeof LoadingIcon;
 
     export interface Props {
         Svg: IconType;

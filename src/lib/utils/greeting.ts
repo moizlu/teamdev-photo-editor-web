@@ -24,18 +24,18 @@ const greeting = () => {
     console.group("%cこんにちは！！", `font-weight: bold; font-size: 40px; ${TEXT_COLOR_STYLE}`);
     console.log("%cTeam Sevenの作品をご覧いただき\nありがとうございます！", "font-size: 15px");
 
-    console.group("このサイトの技術スタックは");
-    console.log(`\
-フロントエンドフレームワーク: SvelteKit
-CSSフレームワーク          : Tailwind CSS
-キャンバス操作ライブラリ    : Fabric.js
-AI/ML                     : Transformers.js
-ホスティング               : Cloudflare Pages\
-`);
-    console.log("です。")
-    console.groupEnd();
+//     console.group("このサイトの技術スタックは");
+//     console.log(`\
+// フロントエンドフレームワーク: SvelteKit
+// CSSフレームワーク          : Tailwind CSS
+// キャンバス操作ライブラリ    : Fabric.js
+// AI/ML                     : Transformers.js
+// ホスティング               : Cloudflare Pages\
+// `);
+//     console.log("です。")
+//     console.groupEnd();
 
-    console.log("ソースコードは\nhttps://photoeditor.moizlu.com/source-code\nにあります。");
+//     console.log("ソースコードは\nhttps://photoeditor.moizlu.com/source-code\nにあります。");
     console.groupEnd();
 };
 

@@ -50,6 +50,7 @@ export const canvasState = $state({
     _value: undefined as (fabricModule.Canvas | undefined),
     container: undefined as (HTMLDivElement | undefined),
     _isCreated: false,
+    canvasCreatedEvent: new Event('canvasCreated'),
 
     init: async () => {
         if (!browser) { return; }
