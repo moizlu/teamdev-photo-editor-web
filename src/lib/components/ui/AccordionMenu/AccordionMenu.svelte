@@ -24,6 +24,12 @@
         isOpened = !isOpened;
     }
 
+    const mobileModalClose = () => {
+        if (window.matchMedia("(max-width:64rem)").matches) {
+            isOpened = false;
+        }
+    }
+
     $effect(() => {
         isMenuOpened.set(isOpened);
     });
@@ -46,11 +52,11 @@
 
             {@render children()}
             <div class="w-full flex justify-stretch items-center gap-2">
-                <button onclick={() => isOpened = false} class="lg:hidden flex-1 flex justify-start items-center button-general button-bg-danger">
+                <button onclick={mobileModalClose} class="flex-1 flex justify-start items-center button-general button-bg-danger">
                     <SvgIcon Svg={CloseIcon} size={40} />
                     <p class="flex-1 text-center">キャンセル</p>
                 </button>
-                <button onclick={() => { onApply?.(); isOpened = false; }} class="lg:hidden flex-1 flex justify-start items-center button-general button-bg-turn-on">
+                <button onclick={() => { onApply?.(); mobileModalClose(); }} class="flex-1 flex justify-start items-center button-general button-bg-turn-on">
                     <SvgIcon Svg={CheckIcon} size={40} />
                     <p class="flex-1 text-center">適用</p>
                 </button>
