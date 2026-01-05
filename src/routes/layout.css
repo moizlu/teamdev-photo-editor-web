@@ -78,7 +78,7 @@ html {
     }
 
     label:has(input[type="radio"]:checked) {
-        @apply bg-turn-on/30;
+        @apply bg-turn-on/30 shadow-sm/25;
     }
 
     img {
