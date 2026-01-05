@@ -17,7 +17,7 @@
     let height = $state(0);
     let scale = $state(1.0);
 
-    let method: ResizeMethod = $state("width-height");
+    let method: ResizeMethod = $state("scale");
 
     const onchange = () => {
         method = (document.querySelector('input[name="basic:resize-method"]:checked') as HTMLInputElement)?.value as ResizeMethod;
@@ -88,7 +88,7 @@
                 <p class="w-full flex-1 text-center">高さで指定</p>
             </label>
             <label class="flex justify-between items-center">
-                <input {onchange} type="radio" name="basic:resize-method" value="scale">
+                <input {onchange} type="radio" name="basic:resize-method" value="scale" checked>
                 <SvgIcon Svg={ZoomOutIcon} size={30} />
                 <p class="w-full flex-1 text-center">倍率で指定</p>
             </label>
@@ -96,7 +96,7 @@
 
         <div class="flex-1 flex-col-center">
             <div class="flex-col-center">
-                <p class="m-2">解像度: {originalSize.width}x{originalSize.height}</p>
+                <p class="m-2">解像度: {Math.floor(originalSize.width)}x{Math.floor(originalSize.height)}</p>
             </div>
             <div class="w-full flex-col-center gap-2 my-2">
                 <div class={["transition-all duration-150 w-full flex-center gap-1", (method === "width-height" || method === "width") ? "opacity-100" : "pointer-events-none absolute opacity-0"]}>

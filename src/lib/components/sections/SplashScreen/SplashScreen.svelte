@@ -3,11 +3,11 @@
 
     import LoadingIcon from '$lib/assets/icons/loading.svelte';
 
-    import { fabricState } from '$lib/state';
+    import { isInitialized } from '$lib/state';
 
     import SvgIcon from '$lib/components/ui/SvgIcon/SvgIcon.svelte';
 
-    const isOpened = $derived(fabricState.get() === undefined);
+    const isOpened = $derived(!isInitialized());
 </script>
 
 {#if isOpened}

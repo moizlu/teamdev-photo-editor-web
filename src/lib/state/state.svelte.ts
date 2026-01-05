@@ -1,6 +1,11 @@
 import { browser } from '$app/environment';
 
 import type fabricModule from 'fabric';
+import * as transformersModule from '@huggingface/transformers';
+// import type OpenCV from '@techstark/opencv-js';
+//! 注意!!! 動的インポートがなんかうまく行かないので静的インポートを使っています。
+//! adapter-static以外を使う時はなんとかしてサーバーサイドにバンドルされることを回避すること!!!!!
+import OpenCV from '@techstark/opencv-js';
 
 import { theme } from "./theme.svelte";
 
@@ -11,8 +16,11 @@ export const isInitialized = () => _isInitialized;
 
 export const init = async () => {
     theme.init();
+
     await fabricState.init();
     await canvasState.init();
+    await transformersState.init();
+    await openCVState.init();
 
     _isInitialized = true;
     document.dispatchEvent(initializedEvent);
@@ -117,3 +125,23 @@ export const canvasState = $state({
         return dataUrl;
     }
 });
+
+export const transformersState = $state({
+    _value: undefined as typeof transformersModule | undefined,
+
+    init: async () => {
+        transformersState._value = await import("@huggingface/transformers");
+    },
+
+    get: () => transformersState._value,
+});
+
+export const openCVState = $state({
+    _value: undefined as typeof OpenCV | undefined,
+
+    init: async () => {
+        openCVState._value = OpenCV;
+    },
+
+    get: () => openCVState._value
+})

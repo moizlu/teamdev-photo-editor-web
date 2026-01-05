@@ -13,12 +13,13 @@
 
     interface Props {
         isOpened?: boolean;
+        canApply?: boolean;
         icon: IconType;
         title: string;
         onApply?: () => void;
         children: Snippet;
     }
-    let { isOpened = $bindable(false), icon, title, onApply, children }: Props = $props();
+    let { isOpened = $bindable(false), canApply = $bindable(true), icon, title, onApply, children }: Props = $props();
 
     const onclick = () => {
         isOpened = !isOpened;
@@ -57,7 +58,7 @@
                     <SvgIcon Svg={CloseIcon} size={40} />
                     <p class="flex-1 text-center">キャンセル</p>
                 </button>
-                <button onclick={() => { onApply?.(); mobileModalClose(); }} class="flex-1 flex justify-start items-center button-general button-bg-turn-on">
+                <button onclick={() => { onApply?.(); mobileModalClose(); }} disabled={!canApply} class="flex-1 flex justify-start items-center button-general button-bg-turn-on">
                     <SvgIcon Svg={CheckIcon} size={40} />
                     <p class="flex-1 text-center">適用</p>
                 </button>
