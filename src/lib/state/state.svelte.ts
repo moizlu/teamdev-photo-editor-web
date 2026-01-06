@@ -13,10 +13,11 @@ export const canvasCreatedEvent = new Event('canvasCreated');
 export const initializedEvent = new Event('initialized');
 
 const initializationProgress = {
-    'start': { msg:"Webページをダウンロード中", progress: 0 },
-    'canvas': { msg:"キャンバスを読み込み中", progress: 25 },
-    'transformers': { msg:"transformers.jsを読み込み中", progress: 50 },
-    'opencv': { msg:"OpenCVを読み込み中", progress: 75 }
+    'start': { msg:"Webページをダウンロード中......", progress: 0 },
+    'canvas': { msg:"キャンバスを読み込み中......", progress: 25 },
+    'transformers': { msg:"transformers.jsを読み込み中......", progress: 50 },
+    'opencv': { msg:"OpenCVを読み込み中......", progress: 75 },
+    'done': { msg:"完了しました！", progress: 100 },
 };
 
 export const initState = $state({
@@ -42,6 +43,7 @@ export const init = async () => {
     await transformersState.init();
     initState.setProgress('opencv');
     await openCVState.init();
+    initState.setProgress('done');  
 
     initState.complete();
     document.dispatchEvent(initializedEvent);
