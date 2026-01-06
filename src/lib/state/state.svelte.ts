@@ -26,7 +26,10 @@ export const initState = $state({
     getProgress: () => initializationProgress[initState._state],
     setProgress: (state: keyof typeof initializationProgress) => initState._state = state,
     completed: () => initState._completed,
-    complete: () => { initState._completed = true }
+    complete: () => {
+        initState._completed = true;
+        document.dispatchEvent(initializedEvent);
+    }
 });
 
 export const init = async () => {

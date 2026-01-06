@@ -6,10 +6,26 @@
     import { initState } from '$lib/state';
 
     import SvgIcon from '$lib/components/ui/SvgIcon/SvgIcon.svelte';
+    import { onMount } from 'svelte';
 
-    const isOpened = $derived(!initState.completed());
+    let isOpened = $state(true);
 
     let progressBar: HTMLProgressElement | undefined = $state(undefined);
+
+    onMount(() => {
+        // 処理が早すぎるとチラチラするから必ず少し待つ
+        const onInitialized = () => {
+            setTimeout(() => {
+                isOpened = false;
+            }, 300);
+        }
+
+        document.addEventListener('initialized', onInitialized);
+
+        return () => {
+            document.removeEventListener('initialized', onInitialized);
+        }
+    });
 </script>
 
 {#if isOpened}
