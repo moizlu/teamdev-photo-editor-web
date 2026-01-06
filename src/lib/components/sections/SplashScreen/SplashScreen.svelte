@@ -3,18 +3,46 @@
 
     import LoadingIcon from '$lib/assets/icons/loading.svelte';
 
-    import { isInitialized } from '$lib/state';
+    import { initState } from '$lib/state';
 
     import SvgIcon from '$lib/components/ui/SvgIcon/SvgIcon.svelte';
 
-    const isOpened = $derived(!isInitialized());
+    const isOpened = $derived(!initState.completed());
+
+    let progressBar: HTMLProgressElement | undefined = $state(undefined);
 </script>
 
 {#if isOpened}
-    <div transition:fade={{duration: 300}} class="fixed w-dvw h-dvh top-0 left-0 z-100 bg-base">
-        <div class="w-full h-full flex flex-col justify-center items-center gap-5">
-            <p class="text-3xl">読み込み中...</p>
-            <SvgIcon Svg={LoadingIcon} size={100} class="animate-spin" />
+    <div transition:fade={{duration: 300}} class="fixed w-dvw h-dvh top-0 left-0 z-100 background-gradient text-base-light">
+        <div class="w-full h-full flex flex-col justify-center items-center">
+            <div class="flex-center">
+                <p class="text-3xl">読み込み中</p>
+                <SvgIcon Svg={LoadingIcon} size={50} autoChangeByTheme={false} class="animate-spin fill-base-light" />
+            </div>
+            <p class="text-lg">{initState.getProgress().progress}%</p>
+            <progress bind:this={progressBar} value={initState.getProgress().progress} max={100} ></progress>
+            <p class="text-md">{initState.getProgress().msg}......</p>
         </div>
     </div>
 {/if}
+
+<style>
+    @reference "../../../../routes/layout.css";
+
+    @keyframes gradient-move {
+        from {
+            background-position: top left;
+        }
+        50% {
+            background-position: bottom right;
+        }
+        to {
+            background-position: top left;
+        }
+    }
+    .background-gradient {
+        background-size: 250%;
+        background-image: var(--logo-gradient);
+        animation: gradient-move 2s ease-out infinite;
+    }
+</style>

@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap');
 @import 'tailwindcss';
 
+:root {
+    --logo-gradient: linear-gradient(120deg, #301CBA, #DD2FEA);
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -88,9 +92,29 @@ html {
     h1 {
         @apply text-2xl md:text-3xl;
     }
+
+    progress {
+        @apply h-5 rounded-sm shadow-black shadow-md/75;
+    }
+
+    progress::-webkit-progress-bar {
+        @apply bg-label rounded-sm;
+    }
+
+    progress::-webkit-progress-value {
+        @apply bg-success rounded-sm;
+    }
+
+    progress::-moz-progress-bar {
+        @apply bg-success rounded-sm;
+    }
 }
 
 @layer components {
+    .logo-color {
+        background: linear-gradient(45deg, #301CBA, #DD2FEA);
+    }
+
     .flex-center {
         @apply flex justify-center items-center;
     }

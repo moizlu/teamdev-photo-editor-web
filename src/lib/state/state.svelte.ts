@@ -11,18 +11,36 @@ import { theme } from "./theme.svelte";
 
 export const canvasCreatedEvent = new Event('canvasCreated');
 export const initializedEvent = new Event('initialized');
-let _isInitialized = $state(false);
-export const isInitialized = () => _isInitialized;
+
+const initializationProgress = {
+    'start': { msg:"Webページをダウンロード中", progress: 0 },
+    'canvas': { msg:"キャンバスを読み込み中", progress: 25 },
+    'transformers': { msg:"transformers.jsを読み込み中", progress: 50 },
+    'opencv': { msg:"OpenCVを読み込み中", progress: 75 }
+};
+
+export const initState = $state({
+    _state: 'start' as keyof typeof initializationProgress,
+    _completed: false,
+
+    getProgress: () => initializationProgress[initState._state],
+    setProgress: (state: keyof typeof initializationProgress) => initState._state = state,
+    completed: () => initState._completed,
+    complete: () => { initState._completed = true }
+});
 
 export const init = async () => {
     theme.init();
 
+    initState.setProgress('canvas');
     await fabricState.init();
     await canvasState.init();
+    initState.setProgress('transformers')
     await transformersState.init();
+    initState.setProgress('opencv');
     await openCVState.init();
 
-    _isInitialized = true;
+    initState.complete();
     document.dispatchEvent(initializedEvent);
 };
 

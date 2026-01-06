@@ -1,5 +1,5 @@
 const greeting = () => {
-    const TEXT_COLOR_STYLE = "background: linear-gradient(45deg, #301CBA, #DD2FEA); background-clip: text; -webkit-background-clip: text; -moz-background-clip: text; color: transparent;";
+    const TEXT_COLOR_STYLE = "background: linear-gradient(120deg, #301CBA, #DD2FEA); background-clip: text; -webkit-background-clip: text; -moz-background-clip: text; color: transparent;";
 
     console.log("初期化が完了しました。");
 
