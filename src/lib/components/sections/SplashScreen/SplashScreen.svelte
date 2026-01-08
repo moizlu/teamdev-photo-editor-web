@@ -36,7 +36,7 @@
                 <SvgIcon Svg={LoadingIcon} size={50} autoChangeByTheme={false} class="animate-spin fill-base-light" />
             </div>
             <p class="text-lg">{initState.getProgress().progress}%</p>
-            <progress bind:this={progressBar} value={initState.getProgress().progress} max={100} ></progress>
+            <progress bind:this={progressBar} value={initState.getProgress().progress} max={100} class="m-3"></progress>
             <p class="text-md">{initState.getProgress().msg}</p>
         </div>
     </div>
@@ -60,5 +60,9 @@
         background-size: 250%;
         background-image: var(--logo-gradient);
         animation: gradient-move 2s ease-out infinite;
+    }
+
+    progress::-webkit-progress-bar {
+        @apply bg-transparent rounded-sm;
     }
 </style>

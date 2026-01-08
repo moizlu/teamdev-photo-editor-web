@@ -102,11 +102,11 @@ html {
     }
 
     progress::-webkit-progress-value {
-        @apply bg-success rounded-sm;
+        @apply bg-success rounded-sm transition-all duration-300;
     }
 
     progress::-moz-progress-bar {
-        @apply bg-success rounded-sm;
+        @apply bg-success rounded-sm transition-all duration-300;
     }
 }
 

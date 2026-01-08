@@ -66,3 +66,9 @@
         </div>
     {/if}
 </div>
+
+<style>
+    div {
+        scrollbar-gutter: stable;
+    }
+</style>

@@ -2,9 +2,8 @@ import { browser } from '$app/environment';
 
 import type fabricModule from 'fabric';
 import * as transformersModule from '@huggingface/transformers';
-// import type OpenCV from '@techstark/opencv-js';
 //! 注意!!! 動的インポートがなんかうまく行かないので静的インポートを使っています。
-//! adapter-static以外を使う時はなんとかしてサーバーサイドにバンドルされることを回避すること!!!!!
+//! adapter-static以外を使う時はなんとかしてサーバーサイドにバンドルされることを回避すること!!!!!'
 import OpenCV from '@techstark/opencv-js';
 
 import { theme } from "./theme.svelte";
@@ -34,6 +33,8 @@ export const initState = $state({
 });
 
 export const init = async () => {
+    if (!browser) { return; }
+
     theme.init();
 
     initState.setProgress('canvas');
@@ -43,7 +44,7 @@ export const init = async () => {
     await transformersState.init();
     initState.setProgress('opencv');
     await openCVState.init();
-    initState.setProgress('done');  
+    initState.setProgress('done');
 
     initState.complete();
     document.dispatchEvent(initializedEvent);
@@ -80,6 +81,7 @@ export const fabricState = $state({
 export const canvasState = $state({
     _value: undefined as (fabricModule.Canvas | undefined),
     container: undefined as (HTMLDivElement | undefined),
+    _image: undefined as (fabricModule.FabricImage | undefined),
     _isCreated: false,
     canvasCreatedEvent: new Event('canvasCreated'),
 
@@ -105,12 +107,16 @@ export const canvasState = $state({
 
     isCreated: () => canvasState._isCreated,
 
-    create: (dimensions: { width: number, height: number }) => {
+    create: (dimensions: { width: number, height: number }, image?: fabricModule.FabricImage) => {
         if (!canvasState._value) { return; }
 
         originalSize.set(dimensions);
         canvasState._value.setDimensions(dimensions);
         canvasState._isCreated = true;
+
+        if (image) {
+            canvasState._image = image;
+        }
         document.dispatchEvent(canvasCreatedEvent);
     },
     reset: () => {

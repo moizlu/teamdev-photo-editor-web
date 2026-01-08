@@ -15,6 +15,7 @@
 	import { canvasState } from '$lib/state';
 
 	let { children } = $props();
+
 	onMount(async () => {
 		await initState();
 		greeting();

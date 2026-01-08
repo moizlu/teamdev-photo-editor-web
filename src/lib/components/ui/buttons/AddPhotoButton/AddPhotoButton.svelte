@@ -10,7 +10,6 @@
     import { dialog } from "../../Dialog";
     import SvgIcon from "../../SvgIcon/SvgIcon.svelte";
     import DraggingOverlay from "./DraggingOverlay.svelte";
-    import Icon from "../../Icon";
 
     import { fabricState, canvasState, originalSize } from "$lib/state";
 
@@ -44,7 +43,7 @@
                 canvasState.create({
                     width: displayWidth,
                     height: displayHeight
-                });
+                }, image);
 
                 canvas.backgroundImage = image;
                 canvas.centerObject(image);
