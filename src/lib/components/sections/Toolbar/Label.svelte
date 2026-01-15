@@ -5,7 +5,7 @@
 
     import { basicInfo } from "./Tabs/Basic";
     import { effectsInfo } from "./Tabs/Effects";
-    import { aiInfo } from "./Tabs/Ai";
+    import { aiInfo } from "./Tabs/AI";
     // import { settingsInfo } from "./Tabs/Settings";
 
     import SvgIcon from "$lib/components/ui/SvgIcon/SvgIcon.svelte";

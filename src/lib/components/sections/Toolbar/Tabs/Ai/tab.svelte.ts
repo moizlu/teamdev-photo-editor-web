@@ -1,9 +1,9 @@
-import AiIcon from "$lib/assets/icons/ai.svelte";
+import AIIcon from "$lib/assets/icons/ai.svelte";
 import Contents from "./Contents.svelte";
 
 export const aiInfo = {
     id: "ai",
     name: "AI",
-    icon: AiIcon,
+    icon: AIIcon,
     contents: Contents
 };

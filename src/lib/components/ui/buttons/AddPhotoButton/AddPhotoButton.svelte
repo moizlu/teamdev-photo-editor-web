@@ -45,6 +45,7 @@
                     height: displayHeight
                 }, image);
 
+                canvas.backgroundColor = "#FFFFFF00";
                 canvas.backgroundImage = image;
                 canvas.centerObject(image);
             } else {

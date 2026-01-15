@@ -1,3 +1,13 @@
 {
-    "ignoreWords": ["huggingface", "techstark"]
+    "ignoreWords": [
+        "huggingface",
+        "techstark"
+    ],
+    "words": [
+        "briaai",
+        "modnet",
+        "RMBG",
+        "webgpu",
+        "Xenova"
+    ]
 }

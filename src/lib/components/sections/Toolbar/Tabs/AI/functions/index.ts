@@ -1,0 +1,1 @@
+export { default as BgRemoval } from "./BgRemoval.svelte";
