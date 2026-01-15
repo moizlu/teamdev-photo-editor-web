@@ -6,7 +6,7 @@
     import { basicInfo } from "./Tabs/Basic";
     import { effectsInfo } from "./Tabs/Effects";
     import { aiInfo } from "./Tabs/AI";
-    import { settingsInfo } from "./Tabs/Settings";
+    // import { settingsInfo } from "./Tabs/Settings";
 
     interface Props {
         class?: ClassValue;
@@ -17,7 +17,7 @@
         basicInfo,
         effectsInfo,
         aiInfo,
-        settingsInfo
+        // settingsInfo
     ];
 </script>
 
