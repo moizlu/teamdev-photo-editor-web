@@ -33,7 +33,7 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 
-	<meta property="og:url" content="https://imageeditor.moizlu.com/" />
+	<meta property="og:url" content="https://photoeditor.moizlu.com/" />
 	<meta property="og:type" content="profile" />
 	<meta property="og:title" content="画像編集ツール(Web版)" />
 	<meta property="og:image" content="https://photoeditor.moizlu.com/ogp.png" />
