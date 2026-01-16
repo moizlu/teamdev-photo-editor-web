@@ -2,7 +2,7 @@
 @import 'tailwindcss';
 
 :root {
-    --logo-gradient: linear-gradient(120deg, #301CBA, #DD2FEA);
+    --logo-gradient: linear-gradient(45deg, #301CBA, #DD2FEA);
 }
 
 html {
@@ -34,6 +34,8 @@ html {
 
     --color-turn-on: light-dark(var(--color-blue-600), var(--color-sky-400));
     --color-turn-off: var(--color-neutral-500);
+
+    --color-logo: linear-gradient(45deg, #301CBA, #DD2FEA);
 
     --spacing-safe-top: env(safe-area-inset-top);
     --spacing-safe-bottom: env(safe-area-inset-bottom);

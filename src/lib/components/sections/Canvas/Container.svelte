@@ -48,7 +48,8 @@
     </div>
 {/snippet}
 
+<StartGuideOverlay />
+
 <div id="main-canvas-container" class={[className, "relative w-full h-full overflow-hidden flex-center"]}>
     <Canvas />
-    <StartGuideOverlay />
 </div>
