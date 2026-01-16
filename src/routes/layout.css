@@ -85,6 +85,25 @@ html {
         @apply bg-turn-on/30 shadow-sm/25;
     }
 
+    input[type="checkbox"] {
+        @apply sr-only;
+    }
+
+    label:has(input[type="checkbox"]) {
+        @apply cursor-pointer
+               relative
+               before:transition-all before:duration-200
+               before:block before:content-[''] before:w-12 before:h-7 before:bg-base before:inset-shadow-black before:inset-shadow-sm/100 before:rounded-full
+               after:transition-all after:duration-200
+               after:content-[''] after:absolute after:left-0 after:w-5 after:h-5 after:mx-0.5 after:my-1 after:bg-label
+               hover:after:translate-x-0.5
+               after:rounded-full after:shadow-black after:shadow-sm/100;
+    }
+
+    label:has(input[type="checkbox"]:checked) {
+        @apply before:bg-turn-on after:translate-x-6 hover:after:translate-x-5.5;
+    }
+
     img {
         pointer-events: none;
     }

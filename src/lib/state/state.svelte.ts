@@ -129,6 +129,8 @@ export const canvasState = $state({
         canvasState._isCreated = false;
     },
 
+    getImage: () => canvasState._image,
+
     getDataUrl: (): string => {
         const cv = canvasState.get();
         if (!cv) { throw new Error("キャンバスが見つかりません。"); }
