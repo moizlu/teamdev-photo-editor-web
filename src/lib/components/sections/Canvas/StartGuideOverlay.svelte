@@ -16,7 +16,7 @@
                     <SvgIcon Svg={AddPhotoIcon} size={80} />
                     <div class="w-full flex-col-center">
                         <p class="w-full m-2 text-center text-3xl">画像を追加</p>
-                        <p class="text-center text-sm">またはドラッグ&ドロップ</p>
+                        <p class="text-center text-sm">ドラッグ&ドロップも可</p>
                     </div>
                 </div>
             </button>
