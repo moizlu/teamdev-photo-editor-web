@@ -5,6 +5,7 @@
     import DeleteAllButton from "$lib/components/ui/buttons/DeleteAllButton";
     import SettingsButton from "$lib/components/ui/buttons/SettingsButton";
     import { AboutButton } from "$lib/components/ui/buttons/About";
+    import { ShareButton } from "$lib/components/ui/buttons/ShareButton";
 
     import { canvasState } from "$lib/state";
 </script>
@@ -18,5 +19,6 @@
         <DeleteAllButton class={["sm:flex-1", (!canvasState.isCreated()) && "invisible"]} />
         <SettingsButton class="flex-none" />
         <AboutButton class="flex-none" />
+        <ShareButton class="flex-none" />
     </div>
 </header>
