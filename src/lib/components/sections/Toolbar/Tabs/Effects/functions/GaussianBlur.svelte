@@ -15,5 +15,5 @@
 </script>
 
 <AccordionMenu icon={BlurIcon} title="ぼかし" {onApply}>
-    <p>しね</p>
+    <p></p>
 </AccordionMenu>
