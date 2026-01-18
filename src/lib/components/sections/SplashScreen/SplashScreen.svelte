@@ -30,14 +30,16 @@
 
 {#if isOpened}
     <div transition:fade={{duration: 300}} class="fixed w-dvw h-dvh top-0 left-0 z-100 background-gradient text-base-light">
-        <div class="w-full h-full flex flex-col justify-center items-center">
-            <div class="flex-center">
-                <p class="text-3xl">読み込み中</p>
-                <SvgIcon Svg={LoadingIcon} size={50} autoChangeByTheme={false} class="animate-spin fill-base-light" />
+        <div class="w-full h-full flex flex-col-center">
+            <div class="w-80 h-fit p-4 rounded-xl flex flex-col-center bg-black/50">
+                <div class="flex-center">
+                    <SvgIcon Svg={LoadingIcon} size={50} autoChangeByTheme={false} class="animate-spin fill-base-light" />
+                    <p class="text-3xl">読み込み中</p>
+                </div>
+                <p class="text-lg">{initState.getProgress().progress}%</p>
+                <progress bind:this={progressBar} value={initState.getProgress().progress} max={100} class="m-3"></progress>
+                <p class="text-md">{initState.getProgress().msg}</p>
             </div>
-            <p class="text-lg">{initState.getProgress().progress}%</p>
-            <progress bind:this={progressBar} value={initState.getProgress().progress} max={100} class="m-3"></progress>
-            <p class="text-md">{initState.getProgress().msg}</p>
         </div>
     </div>
 {/if}
