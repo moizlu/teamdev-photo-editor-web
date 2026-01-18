@@ -9,14 +9,14 @@
 </script>
 
 {#if !canvasState.isCreated()}
-    <div transition:slide={{duration: 500, axis: 'y'}} class="z-90 fixed w-full h-full top-0 left-0 flex-center bg-base">
+    <div transition:slide={{duration: 500, axis: 'y'}} class="text-base-light z-90 fixed w-full h-full top-0 left-0 flex-center background-gradient">
         <div class="w-full flex-col-center gap-2">
-            <button class="group w-80 p-2 cursor-pointer create-button rounded-full" onclick={() => document.getElementById('file-input')?.click()}>
+            <button class="transition-all duration-200 group w-80 p-2 cursor-pointer rounded-full bg-black/25 button-general create-button" onclick={() => document.getElementById('file-input')?.click()}>
                 <div class="mx-5 flex justify-center items-center gap-2">
-                    <SvgIcon Svg={AddPhotoIcon} size={80} />
+                    <SvgIcon Svg={AddPhotoIcon} size={80} autoChangeByTheme={false} class="fill-base-light" />
                     <div class="w-full flex-col-center">
                         <p class="w-full m-2 text-center text-3xl">画像を追加</p>
-                        <p class="text-center text-sm">ドラッグ&ドロップも可</p>
+                        <p class="text-center text-sm">またはドラッグ&ドロップ</p>
                     </div>
                 </div>
             </button>
@@ -28,7 +28,7 @@
                 </div>
             </button> -->
             <div class="flex justify-center items-start mt-2">
-                <SvgIcon Svg={InfoIcon} size={35} />
+                <SvgIcon Svg={InfoIcon} size={35} autoChangeByTheme={false} class="fill-base-light" />
                 <p class="mt-1 text-md text-nowrap">画像は全てデバイス上で処理され、<br>サーバーなどにアップロードされる事は<br>ありません。</p>
             </div>
         </div>
@@ -45,16 +45,16 @@
         }
     }
 
-    @keyframes icon-bounce {
+    @keyframes pulsation {
         from, to {
-            translate: 0 0;
+            scale: 100% 100%;
         }
         50% {
-            translate: 0 -1rem;
+            scale: 105% 105%;
         }
     }
 
-    .create-button {
+    .background-gradient {
         @apply transition-all duration-300;
 
         background-size: 1000%;
@@ -62,14 +62,13 @@
         animation: gradient-move 5s ease-in-out infinite;
     }
 
-    .create-button:hover {
-        @apply transition-all duration-300 scale-110;
-
-        background-size: 100%;
+    .create-button {
+        @apply transition-all duration-300;
+        animation: pulsation 1s ease-in-out infinite;
     }
-    .create-button:active {
-        @apply transition-all duration-300 scale-110;
-
-        background-size: 100%;
+    .create-button:hover {
+        @apply transition-all duration-300;
+        animation: none;
+        scale: 120% 120%;
     }
 </style>

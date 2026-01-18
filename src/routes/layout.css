@@ -93,7 +93,7 @@ html {
 
     label:has(input[type="checkbox"]) {
         @apply cursor-pointer
-               relative
+               relative flex
                before:transition-all before:duration-200
                before:block before:content-[''] before:w-12 before:h-7 before:bg-base before:inset-shadow-black before:inset-shadow-sm/100 before:rounded-full
                after:transition-all after:duration-200
@@ -104,6 +104,10 @@ html {
 
     label:has(input[type="checkbox"]:checked) {
         @apply before:bg-turn-on after:translate-x-6 hover:after:translate-x-5.5;
+    }
+
+    label:has(input[type="checkbox"]:disabled) {
+        @apply before:bg-disabled;
     }
 
     img {

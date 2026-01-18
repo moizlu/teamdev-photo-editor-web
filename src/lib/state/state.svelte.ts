@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 
 import type fabricModule from 'fabric';
-import * as transformersModule from '@huggingface/transformers';
+import type * as transformersModule from '@huggingface/transformers';
 //! 注意!!! 動的インポートがなんかうまく行かないので静的インポートを使っています。
 //! adapter-static以外を使う時はなんとかしてサーバーサイドにバンドルされることを回避すること!!!!!'
 import OpenCV from '@techstark/opencv-js';
