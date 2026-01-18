@@ -1,4 +1,4 @@
-import { inferenceProgress } from "$lib/components/sections/Toolbar/Tabs/AI/state.svelte";
+// import { inferenceProgress } from "$lib/components/sections/Toolbar/Tabs/AI/state.svelte";
 // import { canvasState, fabricState, transformersState } from "$lib/state";
 import type { BackgroundRemovalPipeline } from "@huggingface/transformers";
 
@@ -18,10 +18,10 @@ self.addEventListener('message', async (e) => {
 
     if (!remover) {
         remover = await pipeline('background-removal', "Xenova/modnet", {
-            progress_callback: (info: unknown) => {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                inferenceProgress.update(info as any);
-            }
+            // progress_callback: (info: unknown) => {
+            //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            //     inferenceProgress.update(info as any);
+            // }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         }) as any;
     }
