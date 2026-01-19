@@ -2067,7 +2067,6 @@
      height="500"
      width="500"
      clip-path="url(#clip-path-dot-color)"
-     fill="#000000"
      id="rect337" />
   <rect
      x="18"
@@ -2075,7 +2074,6 @@
      height="112"
      width="112"
      clip-path="url(#clip-path-corners-square-color-0-0)"
-     fill="#000000"
      id="rect338" />
   <rect
      x="50"
@@ -2083,7 +2081,6 @@
      height="48"
      width="48"
      clip-path="url(#clip-path-corners-dot-color-0-0)"
-     fill="#000000"
      id="rect339" />
   <rect
      x="370"
@@ -2091,7 +2088,6 @@
      height="112"
      width="112"
      clip-path="url(#clip-path-corners-square-color-1-0)"
-     fill="#000000"
      id="rect340" />
   <rect
      x="402"
@@ -2099,7 +2095,6 @@
      height="48"
      width="48"
      clip-path="url(#clip-path-corners-dot-color-1-0)"
-     fill="#000000"
      id="rect341" />
   <rect
      x="18"
@@ -2107,7 +2102,6 @@
      height="112"
      width="112"
      clip-path="url(#clip-path-corners-square-color-0-1)"
-     fill="#000000"
      id="rect342" />
   <rect
      x="50"
@@ -2115,6 +2109,5 @@
      height="48"
      width="48"
      clip-path="url(#clip-path-corners-dot-color-0-1)"
-     fill="#000000"
      id="rect343" />
 </svg>
