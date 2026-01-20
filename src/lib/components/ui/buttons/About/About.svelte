@@ -11,7 +11,7 @@
 </button>
 
 <div class="flex-col-center">
-    <div class="w-fit h-fit p-4 rounded-xl bg-base/50 shadow-black shadow-xl/50">
+    <div class="w-fit h-fit p-4 rounded-xl bg-base/85 shadow-black shadow-xl/50">
         <h1 class="text-3xl font-bold my-3">このアプリについて</h1>
         <table>
             <tbody>

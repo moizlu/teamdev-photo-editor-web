@@ -18,7 +18,7 @@
 </button>
 
 <div class="flex-col-center">
-    <div class="flex-col-center w-80 p-4 rounded-xl bg-base/50 shadow-black shadow-xl/50">
+    <div class="flex-col-center w-80 p-4 rounded-xl bg-base/85 shadow-black shadow-xl/50">
         <SvgIcon Svg={QRCode} size={500} class="scale-50 -m-31.25" />
         <div class="flex-center">
             <p>https://photoeditor.moizlu.com/</p>
