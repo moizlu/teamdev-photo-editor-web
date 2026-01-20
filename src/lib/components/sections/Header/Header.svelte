@@ -13,8 +13,8 @@
 <Logo />
 
 <header class="z-98 h-full flex justify-end items-center px-5 bg-base shadow-black shadow-md/100">
-    <div class="w-30 xs:60 sm:w-90 flex justify-end items-center gap-2">
-        <AddPhotoButton class="hidden xs:flex-1" />
+    <div class="w-30 xs:60 sm:w-120 lg:w-200 flex justify-end items-center gap-2">
+        <AddPhotoButton class={["xs:flex-1", (!canvasState.isCreated()) && "invisible"]} />
         <DownloadPhotoButton class={["xs:flex-1", (!canvasState.isCreated()) && "invisible"]} />
         <DeleteAllButton class={["sm:flex-1", (!canvasState.isCreated()) && "invisible"]} />
         <SettingsButton class="flex-none" />

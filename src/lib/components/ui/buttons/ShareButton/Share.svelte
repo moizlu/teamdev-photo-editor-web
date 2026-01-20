@@ -22,7 +22,7 @@
         <SvgIcon Svg={QRCode} size={500} class="scale-50 -m-31.25" />
         <div class="flex-center">
             <p>https://photoeditor.moizlu.com/</p>
-            <button onclick={onCopyButtonClicked}>
+            <button onclick={onCopyButtonClicked} title="コピー" class="cursor-pointer">
                 <SvgIcon Svg={CopyIcon} size={45} />
             </button>
         </div>
