@@ -1,8 +1,13 @@
 <script lang="ts">
+    import LoadingIcon from "$lib/assets/icons/loading.svelte";
+
     import { onMount } from "svelte";
 
     import OpencvFiltersWorker from "$lib/worker/opencv-filters.worker?worker"
-  import { canvasState, fabricState } from "$lib/state";
+    import { canvasState, fabricState } from "$lib/state";
+
+    import SvgIcon from "$lib/components/ui/SvgIcon/SvgIcon.svelte";
+  import { operationProgress } from "./state.svelte";
 
     let filterWorker: Worker | undefined = undefined;
 
@@ -29,10 +34,14 @@
             imageData: imageData,
             blurFactor: factors.blur
         }, [imageData.data.buffer]);
+
+        operationProgress.start();
     }
 
     const onMessageReceived = (e: { data: { status: string, imageData: ImageData } }) => {
         const { status, imageData } = e.data;
+
+        operationProgress.end();
 
         const canvas = canvasState.get();
         const fabric = fabricState.get();
@@ -75,9 +84,14 @@
 </script>
 
 <div class="w-full h-full flex flex-col justify-center lg:justify-start items-center">
+    <div class={["transition-all duration-300 p-2 flex-center", (!operationProgress.isProcessing()) && "opacity-0"]}>
+        <SvgIcon Svg={LoadingIcon} size={30} class="animate-spin" />
+        <p>処理中...</p>
+    </div>
+
      <div class="flex-center gap-1">
         <p>ぼかし</p>
-        <input type="range" min={0} max={1} step={0.1} {onchange} bind:value={factors.blur} class="w-50">
+        <input type="range" min={0} max={1} step={0.1} {onchange} bind:value={factors.blur} disabled={operationProgress.isProcessing()} class="w-50">
         <p>{factors.blur.toFixed(1)}</p>
      </div>
 </div>
