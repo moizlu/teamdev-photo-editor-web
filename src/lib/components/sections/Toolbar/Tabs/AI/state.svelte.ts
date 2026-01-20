@@ -13,7 +13,7 @@ export const inferenceProgress = $state({
         inferenceProgress._isProcessing = true;
         isModalOperating.set(true);
     },
-    done: () => {
+    end: () => {
         inferenceProgress._isProcessing = false;
         isModalOperating.set(false);
     },

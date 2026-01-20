@@ -39,7 +39,7 @@
 
             canvas.setZoom(scale);
             canvas.renderAll();
-        }, 500);
+        }, 100);
     };
 
     onMount(() => {

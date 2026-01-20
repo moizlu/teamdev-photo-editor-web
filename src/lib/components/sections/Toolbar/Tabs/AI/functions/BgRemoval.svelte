@@ -38,7 +38,7 @@
     }
 
     const onMessageReceived = async ({ data }: { data: { status: string, blob: Blob, detail: string } }) => {
-        inferenceProgress.done();
+        inferenceProgress.end();
 
         const { status, blob, detail } = data;
 

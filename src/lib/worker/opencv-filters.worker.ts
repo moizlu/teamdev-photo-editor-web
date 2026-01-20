@@ -1,14 +1,21 @@
 import cv from "@techstark/opencv-js";
 
 self.addEventListener('message', async (e) => {
-    const { dataURL, name, factor } = e.data;
-    if (!dataURL || !name || !factor) { return; }
+    const { imageData, blurFactor } = e.data;
+    if (!imageData) { return; }
 
-    switch (name) {
-        case 'blur':
-            
-            break;
-        default:
-            break;
+    const src = cv.matFromImageData(imageData);
+
+    if (blurFactor !== 0) {
+        const size = Math.round(((blurFactor * 17) - 1) / 2) * 2 + 1;
+        cv.GaussianBlur(src, src, new cv.Size(size, size), 0, 0, cv.BORDER_DEFAULT);
     }
+
+    const result = new ImageData(new Uint8ClampedArray(src.data), src.cols, src.rows);
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    self.postMessage({ status: 'complete', imageData: result }, [result.data.buffer])
+
+    src.delete();
 });
