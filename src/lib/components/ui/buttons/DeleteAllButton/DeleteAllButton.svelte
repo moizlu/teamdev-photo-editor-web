@@ -9,6 +9,7 @@
     import { canvasState } from "$lib/state";
     import { dialog } from "../../Dialog";
     import SvgIcon from "../../SvgIcon/SvgIcon.svelte";
+    import { isModalOperating } from "$lib/components/sections/Toolbar/state.svelte";
 
     interface Props extends HTMLButtonAttributes {}
     const { class: className, ...props }: Props = $props();
@@ -39,7 +40,7 @@
     </div>
 {/snippet}
 
-<button type="button" {onclick} class={[className, "group button-general disabled:bg-turn-off button-bg-danger"]} disabled={!canvasState.isCreated()} {...props}>
+<button type="button" {onclick} class={[className, "group button-general disabled:bg-turn-off button-bg-danger"]} disabled={!canvasState.isCreated() || isModalOperating.get()} {...props}>
     <div class="px-1 flex justify-between items-center gap-1">
         <SvgIcon Svg={DeleteIcon} size={40} class="flex-none enabled:group-hover:translate-y-1" />
         <p class="hidden sm:block flex-1 text-center text-nowrap">全て削除</p>

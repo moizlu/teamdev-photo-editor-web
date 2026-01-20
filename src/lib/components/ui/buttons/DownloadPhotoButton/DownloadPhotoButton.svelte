@@ -5,6 +5,7 @@
 
     import { canvasState } from "$lib/state";
     import SvgIcon from "../../SvgIcon/SvgIcon.svelte";
+    import { isModalOperating } from "$lib/components/sections/Toolbar/state.svelte";
 
     interface Props extends HTMLButtonAttributes {}
     const { class: className, ...props }: Props = $props();
@@ -17,7 +18,7 @@
     };
 </script>
 
-<button type="button" {onclick} class={[className, "group button-general button-bg-turn-on disabled:bg-turn-off"]} disabled={!canvasState.isCreated()} {...props}>
+<button type="button" {onclick} class={[className, "group button-general button-bg-turn-on disabled:bg-turn-off"]} disabled={!canvasState.isCreated() || isModalOperating.get()} {...props}>
     <div class="px-1 flex justify-between items-center gap-1">
         <SvgIcon Svg={DownloadIcon} size={40} class="flex-none enabled:group-hover:translate-y-1" />
         <p class="hidden sm:block flex-1 text-center text-nowrap">ダウンロード</p>
