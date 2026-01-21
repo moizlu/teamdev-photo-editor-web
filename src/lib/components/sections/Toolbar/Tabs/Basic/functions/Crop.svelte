@@ -55,4 +55,5 @@
         <input type="checkbox" bind:checked={isCropping} {onclick}>
         <p class="flex-1 text-center">トリミング</p>
     </label>
+    <p>赤い四角で囲われた範囲がダウンロード時に出力されます。</p>
 </AccordionMenu>
