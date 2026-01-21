@@ -78,7 +78,7 @@
     });
 </script>
 
-<div class="w-full h-full flex flex-col justify-start items-center">
+<div class="w-full h-full flex flex-col justify-start items-start">
     <label>
         <input type="checkbox" {onchange} disabled={inferenceProgress.isProcessing()} class="w-full p-2 button-general"/>
         <p>背景削除</p>
