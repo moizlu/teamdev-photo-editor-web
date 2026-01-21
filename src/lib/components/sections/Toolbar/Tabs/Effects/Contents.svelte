@@ -13,7 +13,9 @@
 
     let factors = $state({
         blur: 0,
-        monochrome: false
+        grayscale: false,
+        flipH: false,
+        flipV: false
     });
 
     const onchange = () => {
@@ -32,7 +34,7 @@
 
         filterWorker.postMessage({
             imageData: imageData,
-            blurFactor: factors.blur
+            ...factors
         }, [imageData.data.buffer]);
 
         operationProgress.start();
@@ -89,9 +91,23 @@
         <p>処理中...</p>
     </div>
 
-     <div class="flex-center gap-1">
-        <p>ぼかし</p>
-        <input type="range" min={0} max={1} step={0.1} {onchange} bind:value={factors.blur} disabled={operationProgress.isProcessing()} class="w-50">
-        <p>{factors.blur.toFixed(1)}</p>
-     </div>
+    <div class="flex flex-col justify-center items-center lg:items-start gap-2">
+        <label class="flex-center gap-1">
+            <p>ぼかし</p>
+            <input type="range" min={0} max={1} step={0.1} {onchange} bind:value={factors.blur} disabled={operationProgress.isProcessing()} class="w-50">
+            <p>{factors.blur.toFixed(1)}</p>
+        </label>
+        <label class="flex-center gap-1">
+            <p>グレイスケール</p>
+            <input type="checkbox" min={0} max={1} step={0.1} {onchange} bind:checked={factors.grayscale} disabled={operationProgress.isProcessing()} class="w-50">
+        </label>
+        <label class="flex-center gap-1">
+            <p>水平方向に反転</p>
+            <input type="checkbox" min={0} max={1} step={0.1} {onchange} bind:checked={factors.flipH} disabled={operationProgress.isProcessing()} class="w-50">
+        </label>
+        <label class="flex-center gap-1">
+            <p>垂直方向に反転</p>
+            <input type="checkbox" min={0} max={1} step={0.1} {onchange} bind:checked={factors.flipV} disabled={operationProgress.isProcessing()} class="w-50">
+        </label>
+    </div>
 </div>
