@@ -1,7 +1,9 @@
 <script lang="ts">
-    import { Resize } from "./functions";
+    import { Objects, Resize, Crop } from "./functions";
 </script>
 
-<div class="w-full h-full flex flex-col justify-center lg:justify-start items-center">
+<div class="w-full h-full flex lg:flex-col justify-center lg:justify-start items-center">
+    <Objects />
     <Resize />
+    <Crop />
 </div>

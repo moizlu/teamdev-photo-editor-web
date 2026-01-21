@@ -131,7 +131,7 @@ export const canvasState = $state({
 
     getImage: () => canvasState._image,
 
-    getDataUrl: (): string => {
+    getDataUrl: (options?: fabricModule.TDataUrlOptions): string => {
         const cv = canvasState.get();
         if (!cv) { throw new Error("キャンバスが見つかりません。"); }
 
@@ -144,7 +144,7 @@ export const canvasState = $state({
         cv.setZoom(1.0);
         cv.renderAll();
 
-        const dataUrl = cv.toDataURL();
+        const dataUrl = cv.toDataURL(options);
 
         cv.setZoom(scale);
         cv.setDimensions({

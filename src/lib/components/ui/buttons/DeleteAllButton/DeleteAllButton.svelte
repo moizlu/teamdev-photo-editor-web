@@ -1,6 +1,5 @@
 <script lang="ts">
     import DeleteIcon from "$lib/assets/icons/delete.svelte";
-    import InfoIcon from "$lib/assets/icons/info.svelte";
     import CheckIcon from "$lib/assets/icons/check.svelte";
     import CloseIcon from "$lib/assets/icons/close.svelte";
 

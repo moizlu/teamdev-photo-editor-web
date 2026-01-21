@@ -7,22 +7,31 @@
 
     import { isMenuOpened } from "./state.svelte";
 
-    import type { Snippet } from "svelte";
+    import { onMount, type Snippet } from "svelte";
     import SvgIcon from "../SvgIcon/SvgIcon.svelte";
     import type { IconType } from "../SvgIcon/SvgIcon.svelte";
 
     interface Props {
         isOpened?: boolean;
         canApply?: boolean;
+        displayApply?: boolean;
         icon: IconType;
         title: string;
         onApply?: () => void;
         children: Snippet;
     }
-    let { isOpened = $bindable(false), canApply = $bindable(true), icon, title, onApply, children }: Props = $props();
+    let { isOpened = $bindable(false), canApply = $bindable(true), displayApply = true, icon, title, onApply, children }: Props = $props();
+
+    let lastOpened = $state(false);
 
     const onclick = () => {
         isOpened = !isOpened;
+
+        if (isOpened) {
+            lastOpened = true;
+            isMenuOpened.set(true);
+        }
+
     }
 
     // モバイル環境のみ処理終了後にメニューを閉じる
@@ -32,15 +41,27 @@
         }
     }
 
-    $effect(() => {
-        isMenuOpened.set(isOpened);
+    onMount(() => {
+        const onOpened = () => {
+            if (lastOpened) {
+                lastOpened = false;
+                return;
+            }
+            isOpened = false;
+        }
+
+        document.addEventListener('accordionMenuOpen', onOpened);
+
+        return () => {
+            document.removeEventListener('accordionMenuOpen', onOpened);
+        }
     });
 </script>
 
-<div class="w-30 lg:w-full max-lg:h-30 flex flex-col justify-center items-stretch">
+<div class="m-2 w-50 lg:w-full max-lg:h-30 flex flex-col justify-center items-stretch">
     <button {onclick} class="max-lg:flex-col flex justify-between items-center gap-2 rounded-xl button-general bg-base hover:bg-label/30 active:bg-label/50 mb-3 p-1">
         <SvgIcon Svg={icon} size={70} class="lg:w-7.5 lg:h-7.5" />
-        <h1 class="text-xl lg:text-xl">{title}</h1>
+        <h1 class="text-sm lg:text-xl">{title}</h1>
         <!-- メニューの矢印 -->
         <SvgIcon Svg={ArrowIcon} size={30} class={["hidden lg:block", (!isOpened) && "rotate-180"]} />
     </button>
@@ -51,17 +72,18 @@
                 <SvgIcon Svg={icon} size={20} class="lg:w-7.5 lg:h-7.5" />
                 <h1 class="text-sm">{title}</h1>
             </div>
-
             {@render children()}
             <div class="w-full flex justify-stretch items-center gap-2">
                 <button onclick={mobileModalClose} class="lg:hidden flex-1 flex justify-start items-center button-general button-bg-danger">
                     <SvgIcon Svg={CloseIcon} size={40} />
                     <p class="flex-1 text-center">キャンセル</p>
                 </button>
-                <button onclick={() => { onApply?.(); mobileModalClose(); }} disabled={!canApply} class="flex-1 flex justify-start items-center button-general button-bg-turn-on">
-                    <SvgIcon Svg={CheckIcon} size={40} />
-                    <p class="flex-1 text-center">適用</p>
-                </button>
+                {#if displayApply}
+                    <button onclick={() => { onApply?.(); mobileModalClose(); }} disabled={!canApply} class="flex-1 flex justify-start items-center button-general button-bg-turn-on">
+                        <SvgIcon Svg={CheckIcon} size={40} />
+                        <p class="flex-1 text-center">適用</p>
+                    </button>
+                {/if}
             </div>
         </div>
     {/if}

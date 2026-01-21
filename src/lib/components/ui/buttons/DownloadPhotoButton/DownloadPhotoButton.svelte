@@ -3,7 +3,7 @@
 
     import type { HTMLButtonAttributes } from "svelte/elements";
 
-    import { canvasState } from "$lib/state";
+    import { canvasState, originalSize } from "$lib/state";
     import SvgIcon from "../../SvgIcon/SvgIcon.svelte";
     import { isModalOperating } from "$lib/components/sections/Toolbar/state.svelte";
 
@@ -11,8 +11,37 @@
     const { class: className, ...props }: Props = $props();
 
     const onclick = () => {
+        const canvas = canvasState.get();
+        if (!canvas) { return; }
+
+        const cropRect = canvas.getObjects().find(obj => (obj as any).croppingRect);
+
+        let url = "#";
+
+        if (cropRect) {
+            const cropBox = cropRect?.getBoundingRect();
+
+            cropRect.set({ visible: false });
+            canvas.renderAll();
+
+            url = canvasState.getDataUrl({
+                left: cropBox.left,
+                top: cropBox.top,
+                width: cropBox.width,
+                height: cropBox.height,
+                format: 'png',
+                multiplier: 1.0
+            });
+
+            cropRect.set({ visible: true });
+            canvas.renderAll();
+        } else {
+            url = canvasState.getDataUrl();
+        }
+
         const a = document.createElement('a');
-        a.href = canvasState.getDataUrl();
+
+        a.href = url;
         a.download = `result-${Date.now()}`;
         a.click();
     };
