@@ -77,26 +77,28 @@
         {#if objects?.length === 0}
             <p class="h-full flex-center text-center">オブジェクトなし</p>
         {:else}
-            {#each objects as obj}
-                {#if !(obj as any).croppingRect}
-                    <div role="button" tabindex="0" onkeydown={(e) => (e.target as HTMLDivElement).click()} onclick={onRowClicked(obj)} class="p-2 py-3 w-full flex gap-2 button-general rounded-xl">
-                        <img src={obj.toDataURL()} alt={obj.type} width={30} height={30} class="w-7.5 h-7.5" >
-                        <p class="flex-1">{obj.type}</p>
-                        <button onclick={onVisibilityToggle(obj)} class="cursor-pointer">
-                            {#if obj.visible}
-                                <SvgIcon Svg={VisibilityOnIcon} size={30} />
-                            {:else}
-                                <SvgIcon Svg={VisibilityOffIcon} size={30} />
-                            {/if}
-                        </button>
-                        <button onclick={onDeleteObject(obj)} class="cursor-pointer">
-                            <SvgIcon Svg={DeleteIcon} size={30} />
-                        </button>
-                    </div>
-                {:else}
-                    <p class="h-full flex-center text-center">オブジェクトなし</p>
-                {/if}
-            {/each}
+            {#if objects?.length === 1 && !(objects[0] as any).croppingRect}
+                {#each objects as obj}
+                    {#if !(objects[0] as any).croppingRect}
+                        <div role="button" tabindex="0" onkeydown={(e) => (e.target as HTMLDivElement).click()} onclick={onRowClicked(obj)} class="p-2 py-3 w-full flex gap-2 button-general rounded-xl">
+                            <img src={obj.toDataURL()} alt={obj.type} width={30} height={30} class="w-7.5 h-7.5" >
+                            <p class="flex-1">{obj.type}</p>
+                            <button onclick={onVisibilityToggle(obj)} class="cursor-pointer">
+                                {#if obj.visible}
+                                    <SvgIcon Svg={VisibilityOnIcon} size={30} />
+                                {:else}
+                                    <SvgIcon Svg={VisibilityOffIcon} size={30} />
+                                {/if}
+                            </button>
+                            <button onclick={onDeleteObject(obj)} class="cursor-pointer">
+                                <SvgIcon Svg={DeleteIcon} size={30} />
+                            </button>
+                        </div>
+                    {/if}
+                {/each}
+            {:else}
+                <p class="h-full flex-center text-center">オブジェクトなし</p>
+            {/if}
         {/if}
         {/key}
     </div>
