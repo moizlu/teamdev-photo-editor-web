@@ -30,6 +30,7 @@
                         Tailwind CSS<br>
                         Fabric.js<br>
                         Transformers.js<br>
+                        OpenCV.js<br>
                         Cloudflare Pages<br>
                     </td>
                 </tr>
