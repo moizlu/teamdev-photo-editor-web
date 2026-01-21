@@ -3,7 +3,7 @@ import cv from "@techstark/opencv-js";
 const BLUR_MAX = 100;
 
 self.addEventListener('message', async (e) => {
-    const { imageData, blur, contrast, grayscale, flipH, flipV } = e.data;
+    const { imageData, blur, contrast, saturation, grayscale, flipH, flipV } = e.data;
     if (!imageData) { return; }
 
     const src = cv.matFromImageData(imageData);
@@ -13,7 +13,25 @@ self.addEventListener('message', async (e) => {
         cv.GaussianBlur(src, src, new cv.Size(size, size), 0, 0, cv.BORDER_DEFAULT);
     }
     if (contrast !== 1.0) {
-        src.convertTo(src, -1, contrast, 0);
+        src.convertTo(src, -1, contrast, 1);
+    }
+    if (saturation !== 1.0) {
+        const hsv = new cv.Mat();
+
+        cv.cvtColor(src, hsv, cv.COLOR_RGBA2RGB);
+        cv.cvtColor(hsv, hsv, cv.COLOR_RGB2HSV);
+
+        // チャンネル分離 [H, S, V]
+        const channels = new cv.MatVector();
+        cv.split(hsv, channels);
+
+        const s = channels.get(1);
+        s.convertTo(s, -1, saturation, 0);
+
+        // 再統合してRGBAに戻す
+        cv.merge(channels, hsv);
+        cv.cvtColor(hsv, src, cv.COLOR_HSV2RGB);
+        cv.cvtColor(src, src, cv.COLOR_RGB2RGBA);
     }
     if (grayscale) {
         cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);

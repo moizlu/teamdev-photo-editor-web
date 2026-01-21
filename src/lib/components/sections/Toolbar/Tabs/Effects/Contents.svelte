@@ -13,6 +13,8 @@
 
     let factors = $state({
         blur: 0,
+        contrast: 1.0,
+        saturation: 1.0,
         grayscale: false,
         flipH: false,
         flipV: false
@@ -34,7 +36,7 @@
 
         filterWorker.postMessage({
             imageData: imageData,
-            ...factors
+            ...factors,
         }, [imageData.data.buffer]);
 
         operationProgress.start();
@@ -92,10 +94,20 @@
     </div>
 
     <div class="flex flex-col justify-center items-center lg:items-start gap-2">
-        <label class="flex-center gap-1">
+        <label class="flex-col-center gap-1">
             <p>ぼかし</p>
             <input type="range" min={0} max={1} step={0.1} {onchange} bind:value={factors.blur} disabled={operationProgress.isProcessing()} class="w-50">
             <p>{factors.blur.toFixed(1)}</p>
+        </label>
+        <label class="flex-col-center gap-1">
+            <p>コントラスト</p>
+            <input type="range" min={0} max={5} step={0.1} {onchange} bind:value={factors.contrast} disabled={operationProgress.isProcessing()} class="w-50">
+            <p>{factors.contrast.toFixed(1)}</p>
+        </label>
+        <label class="flex-col-center gap-1">
+            <p>彩度</p>
+            <input type="range" min={0} max={5} step={0.1} {onchange} bind:value={factors.saturation} disabled={operationProgress.isProcessing()} class="w-50">
+            <p>{factors.saturation.toFixed(1)}</p>
         </label>
         <label class="flex-center gap-1">
             <p>グレイスケール</p>
